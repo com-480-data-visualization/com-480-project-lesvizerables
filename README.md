@@ -2,7 +2,7 @@
 
 | Student's name | SCIPER |
 | -------------- | ------ |
-| | |
+| Mari Sofie Lerfaldet| 311688|
 | | |
 | | |
 
