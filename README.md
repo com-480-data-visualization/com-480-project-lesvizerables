@@ -4,7 +4,7 @@
 | -------------- | ------ |
 | Mari Sofie Lerfaldet| 311688|
 | Vera Fristedt Andersson | 313051 |
-| | |
+| Thomas Bech Madsen | 320028 |
 
 [Milestone 1](#milestone-1-friday-3rd-april-5pm) • [Milestone 2](#milestone-2-friday-1st-may-5pm) • [Milestone 3](#milestone-3-thursday-28th-may-5pm)
 
