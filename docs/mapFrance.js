@@ -7,7 +7,7 @@ var svg = d3.select("body")
     //.attr("width", width)
     //.attr("height", height);
 	
-d3.json("../data/france.json").then(function(france) {
+d3.json("france.json").then(function(france) {
 	svg.append("path")
 		  .datum(topojson.feature(france, france.objects.poly))
 		  .attr("d", d3.geoPath().projection(d3.geoMercator()));
