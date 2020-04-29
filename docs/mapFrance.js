@@ -37,9 +37,12 @@ const path = d3
     .scale(2600)
     .translate([WIDTH / 2, HEIGHT / 2]));
 
+var g = svg.append("g");
+
 d3.json("france.json").then(function(france) {
-	svg
-    .datum(topojson.feature(france, france.objects.poly))
+	g.selectAll("path")
+    .data(topojson.feature(france, france.objects.poly).features)
+    .enter()
     .append("path")
     .attr("d", path)
     .attr("fill", "grey")
