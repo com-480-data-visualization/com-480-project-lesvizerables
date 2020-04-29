@@ -3,12 +3,12 @@ var width = 960,
 
 var svg = d3.select("body")
     .append("svg")
-    //.attr("viewBox", `0 0 100% 100%`);
-    .style("width", width)
-    .style("height", height);
+    .attr("viewBox", `0 0 960 1160`);
+    //.attr("width", width)
+    //.attr("height", height);
 	
 d3.json("../data/france.json").then(function(france) {
 	svg.append("path")
-          .datum(topojson.feature(france, france.objects.poly))
+		  .datum(topojson.feature(france, france.objects.poly))
 		  .attr("d", d3.geoPath().projection(d3.geoMercator()));
 });
