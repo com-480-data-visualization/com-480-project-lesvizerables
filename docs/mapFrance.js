@@ -1,14 +1,15 @@
-var width = 960,
-    height = 1160;
+var width = window.innerWidth,
+    height = window.innerHeight;
 
-var svg = d3.select("body")
+var svg = d3.select(".mapdiv")
     .append("svg")
-    .attr("viewBox", `0 0 960 1160`);
-    //.attr("width", width)
-    //.attr("height", height);
-	
+    .attr("width", width)
+    .attr("height", height);
+
 d3.json("france.json").then(function(france) {
 	svg.append("path")
 		  .datum(topojson.feature(france, france.objects.poly))
-		  .attr("d", d3.geoPath().projection(d3.geoMercator()));
+		  .attr("d", d3.geoPath().projection(d3.geoMercator().center([4.6, 46.5])
+      .scale(2600)
+      .translate([width / 2, height / 2])));
 });
