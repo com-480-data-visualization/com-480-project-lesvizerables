@@ -32,7 +32,7 @@
     top: -44px;
 }
 
-#mapdiv {
+.mapdiv {
   height: 100%;
-  width: 100%
+  width: 100%;
 }
