@@ -1,7 +1,33 @@
 /*put your styles here*/
-/* This can also be deleted must likely -- do not delete class, only the #map*/
 
-#map {
-	width:960px;
-	height:500px;
+.arrow {
+    position:relative;
+    width:150px;
+    margin:25px auto;
+    height:0;
+    border-bottom:5px solid black;
+}
+
+.right{ 
+    content: '';
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid black;
+    position: absolute;
+    right: -10px;
+    top: -44px;
+}
+
+.left{ 
+    content: '';
+    width: 0; 
+	height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 30px solid black;
+    position: absolute;
+    left: -10px;
+    top: -44px;
 }

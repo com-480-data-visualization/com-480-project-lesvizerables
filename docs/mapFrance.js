@@ -1,9 +1,11 @@
 var width = 960,
     height = 1160;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var svg = d3.select("body")
+    .append("svg")
+    .attr("viewBox", `0 0 1560 1760`);
+    //.attr("width", width)
+    //.attr("height", height);
 	
 d3.json("../Data/france.json").then(function(france) {
 	svg.append("path")

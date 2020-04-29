@@ -43,21 +43,59 @@
       </style>
   </head>
   <body data-spy="scroll" data-target="#navigation" data-offset="120">
+    <!-- intro-->
+    <section id="header" style="color: maroon;" class="intro">      
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="container clearfix">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-12">
+                <div id="centered" style="margin: 0 auto; width:50%;"></div>
+              <h1 style = "text-align:center">Wineries
+                </h1>
+                <p style="font-size: 10; text-align: center"><i><b>TestTestTest</i></b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- intro end-->
+    <!-- navbar-->
+    <header class="header">
+      <div class="sticky-wrapper">
+        <div role="navigation" class="navbar navbar-default">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-btn btn-sm navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#header" class="navbar-brand scroll-to"><img src="" style="height: 10; width: 30;" alt=""></a>
+            </div>
+            <div id="navigation" class="collapse navbar-collapse navbar-right">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#foodpois">??</a></li>
+                <li><a href="#story">??</a></li> 
+                <li><a href="#correlation">??</a></li>
+                <li><a href="#seaside">??</a></li>
+                <li><a href="#report">??</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- /.navbar-->
     <!-- ??-->
     <section id="maptest" class="text-page">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <h2 class="heading">Map Test</h2>
-          </div>
           <div class = "col-md-12">
-            <script src="mapFrance.js"></script>
+              <script src="mapFrance.js"></script>
+              <button onclick="window.location.href='/page2'">Continue</button>
+            </div>
+            </div>
           </div>
-          <div class="arrow right">
-           </div>
         </div>
-       </div>
-    </section>
+      </section>
     <!-- ??-->
     <!-- template-->
     <footer style="background-color: #111;" class="section-inverse">
