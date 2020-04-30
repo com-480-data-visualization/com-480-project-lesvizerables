@@ -1,3 +1,28 @@
+// Map province ID's to correct region
+var mapObj = {
+  FR42: "Alsace",
+  FR61: "Aquitaine",
+  FR72: "Auvergne",
+  FR25: "Basse-Normandie",
+  FR26: "Bourgogne",
+  FR52: "Bretagne",
+  FR24: "Centre",
+  FR21: "Champagne-Ardenne",
+  FR83: "Corse",
+  FR43: "Franche-Comté",
+  FR23: "Haute-Normandie",
+  FR10: "Ile-de-France",
+  FR81: "Languedoc-Roussillon",
+  FR63: "Limousin",
+  FR41: "Lorraine",
+  FR62: "Midi-Pyrénées",
+  FR30: "Nord-Pas-de-Calais",
+  FR51: "Pays-de-la-Loire",
+  FR22: "Picardie",
+  FR53: "Poitou-Charantes",
+  FR82: "Provence-Alpes-Côtes d'Azur",
+  FR71: "Rhône-Alpes"
+};
 
 const WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
 const OVERLAY_MULTIPLIER = 10;
@@ -35,34 +60,12 @@ const path = d3
 
 var g = svg.append("g");
 
-var mapObj = {
-  FR42: "Alsace",
-  FR61: "Aquitaine",
-  FR72: "Auvergne",
-  FR25: "Basse-Normandie",
-  FR26: "Bourgogne",
-  FR52: "Bretagne",
-  FR24: "Centre",
-  FR21: "Champagne-Ardenne",
-  FR83: "Corse",
-  FR43: "Franche-Comté",
-  FR23: "Haute-Normandie",
-  FR10: "Ile-de-France",
-  FR81: "Languedoc-Roussillon",
-  FR63: "Limousin",
-  FR41: "Lorraine",
-  FR62: "Midi-Pyrénées",
-  FR30: "Nord-Pas-de-Calais",
-  FR51: "Pays-de-la-Loire",
-  FR22: "Picardie",
-  FR53: "Poitou-Charantes",
-  FR82: "Provence-Alpes-Côtes d'Azur",
-  FR71: "Rhône-Alpes"
-};
-
+// Need to check in original dataframe which regions are included in Southwest France
+// and France Other and clean this into correct province
+// Beaujolais is part of Bourgogne, need to add this to that province in python
 wineProvinces = ["Bordeaux", "Bourgogne", "Alsace", "Pays-de-la-Loire",
-  "Champagne-Ardenne", "Provence-Alpes-Côtes d'Azur",
-  "Rhône-Alpes", "France Other", "Languedoc-Roussillon", "Southwest France", "Beaujolais"];
+  "Champagne-Ardenne", "Provence-Alpes-Côtes d'Azur", "Rhône-Alpes",
+  "Languedoc-Roussillon", "Southwest France", "Beaujolais", "France Other"];
 
 d3.json("france.json").then(function(france) {
 	g.selectAll("path")
