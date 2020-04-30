@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="no-js">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>LesVizerables</title>
@@ -19,29 +19,53 @@
     <link rel="stylesheet" href="css/ekko-lightbox.css">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
-	   <!-- Load D3 library-->
-  	<script src="lib/d3.min.js"></script>
+    <!-- Load D3 library-->
+    <script src="lib/d3.min.js"></script>
     <script src="https://unpkg.com/topojson-client@3"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
+
+    <!--FIREBASE-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDmzgBoste5-fdxUy8AYqFvHSFrn8-2O24",
+            authDomain: "lesvizerables.firebaseapp.com",
+            databaseURL: "https://lesvizerables.firebaseio.com",
+            projectId: "lesvizerables",
+            storageBucket: "lesvizerables.appspot.com",
+            messagingSenderId: "486130606991",
+            appId: "1:486130606991:web:fff0ec6df215624bd021fa"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="loadData.js"></script>
+    <!--FIREBASE END-->
     <!-- Favicon-->
     <!--link rel="shortcut icon" href="favicon.png"-->
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 
     <script>
         function resizeIframe(obj) {
-          obj.style.height = obj.contentWindow.document.documentElement.scrollHeight / 2;
+            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight / 2;
         }
-      </script>
+    </script>
 
-      <style>
+    <style>
+
         body {
-          font-family: 'Montserrat';
-          }
-      </style>
-  </head>
+            font-family: 'Montserrat';
+        }
+    </style>
+</head>
   <body data-spy="scroll" data-target="#navigation" data-offset="120">
     <!-- ??-->
     <section id="maptest" class="text-page">
