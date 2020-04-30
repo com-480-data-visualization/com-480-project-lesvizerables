@@ -34,7 +34,29 @@ function mouseOverHandler(d, i) {
       return "#8c1b0a";
     else
       return "white";
-  });}
+  });
+
+//console.log(d);
+console.log(g);
+
+// Trying to show text when hovering, not working
+// I DON'T GET WHY IT'S NOT WORKING HERE WHEN IT'S WORKING IN THE BOTTOM OF THIS FILE
+  g.selectAll("text")
+    .data(d)
+    .enter()
+    .append("text")
+    .text(function(d) {
+      console.log(d.properties.ID)
+      if(mapObj[d.properties.ID] == null)
+        return d.properties.ID;
+      else
+        return mapObj[d.properties.ID];
+    })
+    .attr("transform", d => `translate(${path.centroid(d)})`)
+    .attr("text-anchor", "middle")
+    .attr("font-size", 10)
+    .attr("class","labels");
+  }
 
 function mouseOutHandler(d, i) {
   d3.select(this).attr("fill", function(d) {
@@ -68,6 +90,9 @@ wineProvinces = ["Bordeaux", "Bourgogne", "Alsace", "Pays-de-la-Loire",
   "Languedoc-Roussillon", "Southwest France", "Beaujolais", "France Other"];
 
 d3.json("france.json").then(function(france) {
+
+  //console.log(topojson.feature(france, france.objects.poly).features);
+
 	g.selectAll("path")
     .data(topojson.feature(france, france.objects.poly).features)
     .enter()
@@ -83,6 +108,7 @@ d3.json("france.json").then(function(france) {
     .on("mouseover", mouseOverHandler)
     .on("mouseout", mouseOutHandler);
 
+    console.log(g);
 /* // This writes out all the country names on the map
   g.selectAll("text")
     .data(topojson.feature(france, france.objects.poly).features)
