@@ -4,38 +4,20 @@ const OVERLAY_MULTIPLIER = 10;
 const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 
 function mouseOverHandler(d, i) {
-  d3.select(this).attr("fill", "grey");
-
-  console.log(`translate(${path.centroid(d)})`);
-
-  //Testing different ways of trying to get the text to show when hovering
-/*
-  var div = document.createElement("div");   // Create a <button> element
-  div.innerHTML = d.properties.ID;
-  div.id = "::province";
-  div.style.cssText = 'transform: {`translate(${path.centroid(d)})`}; width:200px;height:200px;';
-                 // Insert text
-  document.body.appendChild(div);*/
-
-  /*.selectAll("text")
-  .data(d)
-  .enter()
-  .append("text")
-  .text(function(d) {
-    console.log(d.properties.ID)
-    if(mapObj[d.properties.ID] == null)
-      return d.properties.ID;
+  d3.select(this).attr("fill", function(d) {
+    if(wineProvinces.includes(mapObj[d.properties.ID]))
+      return "#8c1b0a";
     else
-      return mapObj[d.properties.ID];
-  })
-  .attr("transform", d => `translate(${path.centroid(d)})`)
-  .attr("text-anchor", "middle")
-  .attr("font-size", 10)
-  .attr("class","labels");*/
-}
+      return "white";
+  });}
+
 function mouseOutHandler(d, i) {
-  d3.select(this).attr("fill", "white")
-}
+  d3.select(this).attr("fill", function(d) {
+    if(wineProvinces.includes(mapObj[d.properties.ID]))
+      return "#fce8c9";
+    else
+      return "white";
+});}
 
 var svg = d3
   .select(".mapdiv")
@@ -78,13 +60,22 @@ var mapObj = {
   FR71: "Rhône-Alpes"
 };
 
+wineProvinces = ["Bordeaux", "Bourgogne", "Alsace", "Pays-de-la-Loire",
+  "Champagne-Ardenne", "Provence-Alpes-Côtes d'Azur",
+  "Rhône-Alpes", "France Other", "Languedoc-Roussillon", "Southwest France", "Beaujolais"];
+
 d3.json("france.json").then(function(france) {
 	g.selectAll("path")
     .data(topojson.feature(france, france.objects.poly).features)
     .enter()
     .append("path")
     .attr("d", path)
-    .attr("fill", "white")
+    .attr("fill", function(d) {
+      if(wineProvinces.includes(mapObj[d.properties.ID]))
+        return "#fce8c9";
+      else
+        return "white";
+    })
     .style("stroke", "black")
     .on("mouseover", mouseOverHandler)
     .on("mouseout", mouseOutHandler);
