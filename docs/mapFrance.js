@@ -29,24 +29,16 @@ const OVERLAY_MULTIPLIER = 10;
 const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 
 function mouseOverHandler(d, i) {
-  d3.select(this).attr("fill", function(d) {
-    if(wineProvinces.includes(mapObj[d.properties.ID]))
-      return "#8c1b0a";
-    else
-      return "white";
-  });
-
-//console.log(d);
-console.log(g);
-
-// Trying to show text when hovering, not working
-// I DON'T GET WHY IT'S NOT WORKING HERE WHEN IT'S WORKING IN THE BOTTOM OF THIS FILE
-  g.selectAll("text")
-    .data(d)
-    .enter()
-    .append("text")
+  d3.select(this)
+    .attr("fill", function(d) {
+      if(wineProvinces.includes(mapObj[d.properties.ID]))
+        return "#8c1b0a";
+      else
+        return "white";
+    })
+    // Takes a while for the tooltip to load
+    .append("svg:title")
     .text(function(d) {
-      console.log(d.properties.ID)
       if(mapObj[d.properties.ID] == null)
         return d.properties.ID;
       else
