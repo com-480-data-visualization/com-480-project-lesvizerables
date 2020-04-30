@@ -17,7 +17,7 @@
     border-left: 30px solid black;
     position: absolute;
     right: -10px;
-    top: -44px;
+    top: -17px;
 }
 
 .left{
@@ -29,10 +29,15 @@
     border-right: 30px solid black;
     position: absolute;
     left: -10px;
-    top: -44px;
+    top: -17px;
 }
 
 .mapdiv {
   height: 100%;
   width: 100%;
+}
+
+.div-button {
+  float:right;
+  padding: 10px;
 }
