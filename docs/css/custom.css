@@ -41,3 +41,13 @@
   float:right;
   padding: 10px;
 }
+
+.province .active {
+  fill: #FB7998;
+}
+.province.active:hover{
+  fill: #FB7998;
+}
+.province.active:not(:hover){
+  fill: #FB7998;
+}
