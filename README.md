@@ -38,9 +38,9 @@ Other than WineEnthusiast and the visualization mentioned, we have not been able
 
 ## Milestone 2 (Friday 1st May, 5pm)
 
-Milestone 2 report [here](Milestone_2.pdf). 
+The report for Milestone 2 can be found [here](Milestone_2.pdf). 
 
-Website skeleton [here](https://com-480-data-visualization.github.io/com-480-project-lesvizerables/#story).
+The website with the skeleton of the visualisation and widgets can be found [here](https://com-480-data-visualization.github.io/com-480-project-lesvizerables/#story).
 
 ## Milestone 3 (Thursday 28th May, 5pm)
 
