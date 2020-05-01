@@ -62,7 +62,7 @@ function mouseOutHandler(d, i) {
 function clicked(d, i) {
   var x, y, k;
 
-  if (d && centered !== d && wineProvinces.includes(mapObj[d.properties.ID])) {
+    if (d && centered !== d && wineProvinces.some(p => p.name === mapObj[d.properties.ID])) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
