@@ -23,6 +23,27 @@
 	<!-- Load D3 library-->
 	<script src="lib/d3.min.js"></script>
 	<script src="https://unpkg.com/topojson-client@3"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!--FIREBASE-->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+
+  <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+          apiKey: "AIzaSyDmzgBoste5-fdxUy8AYqFvHSFrn8-2O24",
+          authDomain: "lesvizerables.firebaseapp.com",
+          databaseURL: "https://lesvizerables.firebaseio.com",
+          projectId: "lesvizerables",
+          storageBucket: "lesvizerables.appspot.com",
+          messagingSenderId: "486130606991",
+          appId: "1:486130606991:web:fff0ec6df215624bd021fa"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+  </script>
 
     <!-- Favicon-->
     <!--link rel="shortcut icon" href="favicon.png"-->
@@ -52,12 +73,14 @@
             <p>
               <a href ="thedata.html"><b>The Data</b></a>
             </p>
-          <div class = "col-md-12">
-            <div class = "mapdiv">
-              <script src="mapFrance.js"></script>
             </div>
-            </div>
-            </div>
+            <div class="col-md-12">
+              <div id="container" class="svg-container">
+                <div class = "mapdiv">
+                  <script src="mapFrance.js"></script>
+                </div>
+              </div>
+          </div>
             <div class="col-md-12">
               <div class="div-button">
                 <a href="searchengine.html">Continue to page &nbsp; 3/3</a>

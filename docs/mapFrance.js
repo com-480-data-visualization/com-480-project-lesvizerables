@@ -1,3 +1,4 @@
+
 // Map province ID's to correct region
 var mapObj = {
   FR42: "Alsace",
@@ -25,10 +26,11 @@ var mapObj = {
 };
 var centered;
 
-const WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
+const WIDTH = window.innerWidth*0.9, HEIGHT = window.innerHeight;
 const OVERLAY_MULTIPLIER = 10;
 const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 
+// Fill province when hovering and add tooltip text
 function mouseOverHandler(d, i) {
   d3.select(this)
     .attr("fill", function(d) {
@@ -75,20 +77,22 @@ function clicked(d, i) {
     centered = null;
   }
   g.selectAll("path")
-      .classed("active", centered && function(d) { return d === centered; });
+    .classed("active", centered && function(d) { return d === centered; });
 
   g.transition()
-      .duration(750)
-      .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+    .duration(750)
+    .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
 }
-
 
 var svg = d3
   .select(".mapdiv")
   .attr("id", "svg")
   .append("svg")
   .attr("width", WIDTH)
-  .attr("height", HEIGHT);
+  .attr("height", HEIGHT)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT)
+  .classed("svg-content", true);
 
 const path = d3
   .geoPath()
