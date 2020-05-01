@@ -1,28 +1,32 @@
 
 // Map province ID's to correct region
+// Need to check in original dataframe which regions are included in Southwest France
+// and France Other and clean this into correct province
+// Beaujolais is part of Bourgogne, need to add this to that province in python
+
 var mapObj = {
-  FR42: "Alsace",
-  FR61: "Aquitaine",
-  FR72: "Auvergne",
-  FR25: "Basse-Normandie",
-  FR26: "Bourgogne",
-  FR52: "Bretagne",
-  FR24: "Centre",
-  FR21: "Champagne-Ardenne",
-  FR83: "Corse",
-  FR43: "Franche-Comté",
-  FR23: "Haute-Normandie",
-  FR10: "Ile-de-France",
-  FR81: "Languedoc-Roussillon",
-  FR63: "Limousin",
-  FR41: "Lorraine",
-  FR62: "Midi-Pyrénées",
-  FR30: "Nord-Pas-de-Calais",
-  FR51: "Pays-de-la-Loire",
-  FR22: "Picardie",
-  FR53: "Poitou-Charantes",
-  FR82: "Provence-Alpes-Côtes d'Azur",
-  FR71: "Rhône-Alpes"
+  FR42: {realname: "Alsace", dataname: "Alsace"},
+  FR61: {realname: "Aquitaine", dataname: null},
+  FR72: {realname: "Auvergne", dataname: null},
+  FR25: {realname: "Basse-Normandie", dataname: null},
+  FR26: {realname: "Bourgogne", dataname: "Burgundy"},
+  FR52: {realname: "Bretagne", dataname: null},
+  FR24: {realname: "Centre", dataname: null},
+  FR21: {realname: "Champagne-Ardenne", dataname: "Champagne"},
+  FR83: {realname: "Corse", dataname: null},
+  FR43: {realname: "Franche-Comté", dataname: null},
+  FR23: {realname: "Haute-Normandie", dataname: null},
+  FR10: {realname: "Ile-de-France", dataname: null},
+  FR81: {realname: "Languedoc-Roussillon", dataname: "Languedoc-Roussillon"},
+  FR63: {realname: "Limousin", dataname: null},
+  FR41: {realname: "Lorraine", dataname: null},
+  FR62: {realname: "Midi-Pyrénées", dataname: null},
+  FR30: {realname: "Nord-Pas-de-Calais", dataname: null},
+  FR51: {realname: "Pays-de-la-Loire", dataname: "Loire Valley"},
+  FR22: {realname: "Picardie", dataname: null},
+  FR53: {realname: "Poitou-Charantes", dataname: null},
+  FR82: {realname: "Provence-Alpes-Côtes d'Azur", dataname: "Provence"},
+  FR71: {realname: "Rhône-Alpes", dataname: "Rhône Valley"}
 };
 var centered;
 
@@ -34,7 +38,7 @@ const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 function mouseOverHandler(d, i) {
   d3.select(this)
     .attr("fill", function(d) {
-        if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
+        if (mapObj[d.properties.ID].dataname)
         return "#8c1b0a";
       else
         return "white";
@@ -42,10 +46,10 @@ function mouseOverHandler(d, i) {
     // Takes a while for the tooltip to load
     .append("svg:title")
     .text(function(d) {
-      if(mapObj[d.properties.ID] == null)
+      if(mapObj[d.properties.ID].realname == null)
         return d.properties.ID;
       else
-        return mapObj[d.properties.ID];
+        return mapObj[d.properties.ID].realname;
     })
     /*.attr("transform", d => `translate(${path.centroid(d)})`)
     .attr("text-anchor", "middle")
@@ -55,7 +59,7 @@ function mouseOverHandler(d, i) {
 
 function mouseOutHandler(d, i) {
   d3.select(this).attr("fill", function(d) {
-      if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
+      if (mapObj[d.properties.ID].dataname)
       return "#fce8c9";
     else
       return "white";
@@ -64,7 +68,7 @@ function mouseOutHandler(d, i) {
 function clicked(d, i) {
   var x, y, k;
 
-    if (d && centered !== d && wineProvinces.some(p => p.name === mapObj[d.properties.ID])) {
+    if (d && centered !== d && mapObj[d.properties.ID].dataname) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
@@ -105,11 +109,6 @@ var g = svg.append("g");
 
 const dbRef = firebase.database().ref()
 
-// Need to check in original dataframe which regions are included in Southwest France
-// and France Other and clean this into correct province
-// Beaujolais is part of Bourgogne, need to add this to that province in python
-wineProvinces = [];
-
 d3.json("france.json").then(function(france) {
   //console.log(topojson.feature(france, france.objects.poly).features);
 
@@ -124,11 +123,10 @@ d3.json("france.json").then(function(france) {
 
     dbRef.once('value').then(function (snapshot) {
         console.log(snapshot.val())
-        wineProvinces = snapshot.val();
 
         g.selectAll("path")
             .attr("fill", function (d) {
-                if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
+                if (mapObj[d.properties.ID].dataname)
                     return "#fce8c9";
                 else
                     return "white";
