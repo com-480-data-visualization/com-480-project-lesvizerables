@@ -95,7 +95,7 @@ var svg = d3
   .attr("width", WIDTH)
   .attr("height", HEIGHT)
   .attr("preserveAspectRatio", "xMinYMin meet")
-  .attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT)
+  .attr("viewBox", "0 80 " + WIDTH * 1.5 + " " + HEIGHT)
   .classed("svg-content", true);
 
 const path = d3
