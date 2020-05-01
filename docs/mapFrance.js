@@ -34,7 +34,7 @@ const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 function mouseOverHandler(d, i) {
   d3.select(this)
     .attr("fill", function(d) {
-      if(wineProvinces.includes(mapObj[d.properties.ID]))
+        if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
         return "#8c1b0a";
       else
         return "white";
@@ -55,7 +55,7 @@ function mouseOverHandler(d, i) {
 
 function mouseOutHandler(d, i) {
   d3.select(this).attr("fill", function(d) {
-    if(wineProvinces.includes(mapObj[d.properties.ID]))
+      if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
       return "#fce8c9";
     else
       return "white";
@@ -64,7 +64,7 @@ function mouseOutHandler(d, i) {
 function clicked(d, i) {
   var x, y, k;
 
-  if (d && centered !== d && wineProvinces.includes(mapObj[d.properties.ID])) {
+    if (d && centered !== d && wineProvinces.some(p => p.name === mapObj[d.properties.ID])) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
@@ -89,7 +89,10 @@ var svg = d3
   .attr("id", "svg")
   .append("svg")
   .attr("width", WIDTH)
-  .attr("height", HEIGHT);
+  .attr("height", HEIGHT)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT)
+  .classed("svg-content", true);
 
 const path = d3
   .geoPath()
@@ -100,30 +103,40 @@ const path = d3
 
 var g = svg.append("g");
 
+const dbRef = firebase.database().ref()
+
 // Need to check in original dataframe which regions are included in Southwest France
 // and France Other and clean this into correct province
 // Beaujolais is part of Bourgogne, need to add this to that province in python
-wineProvinces = ["Bordeaux", "Bourgogne", "Alsace", "Pays-de-la-Loire",
-  "Champagne-Ardenne", "Provence-Alpes-Côtes d'Azur", "Rhône-Alpes",
-  "Languedoc-Roussillon", "Southwest France", "Beaujolais", "France Other"];
+wineProvinces = [];
 
 d3.json("france.json").then(function(france) {
-	g.selectAll("path")
-    .data(topojson.feature(france, france.objects.poly).features)
-    .enter()
-    .append("path")
-    .attr("d", path)
-    .attr("class", "province")
-    .attr("fill", function(d) {
-      if(wineProvinces.includes(mapObj[d.properties.ID]))
-        return "#fce8c9";
-      else
-        return "white";
-    })
-    .style("stroke", "black")
-    .on("mouseover", mouseOverHandler)
-    .on("mouseout", mouseOutHandler)
-    .on("click", clicked);
+  //console.log(topojson.feature(france, france.objects.poly).features);
+
+    g.selectAll("path")
+        .data(topojson.feature(france, france.objects.poly).features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("class", "province")
+        .attr("fill", "white")
+        .style("stroke", "black");
+
+    dbRef.once('value').then(function (snapshot) {
+        console.log(snapshot.val())
+        wineProvinces = snapshot.val();
+
+        g.selectAll("path")
+            .attr("fill", function (d) {
+                if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
+                    return "#fce8c9";
+                else
+                    return "white";
+            })
+            .on("mouseover", mouseOverHandler)
+            .on("mouseout", mouseOutHandler)
+            .on("click", clicked);;
+    });
 
 /* // This writes out all the country names on the map
   g.selectAll("text")

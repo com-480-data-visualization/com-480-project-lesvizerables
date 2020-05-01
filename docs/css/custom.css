@@ -43,11 +43,28 @@
 }
 
 .province .active {
-  fill: #FB7998;
+  fill: #FACDD4;
 }
 .province.active:hover{
-  fill: #FB7998;
+  fill: #FACDD4;
 }
 .province.active:not(:hover){
-  fill: #FB7998;
+  fill: #FACDD4;
+}
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 75%;
+  height: 100%;
+  padding-bottom: 500px;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.svg-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
