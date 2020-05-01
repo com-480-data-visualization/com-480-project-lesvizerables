@@ -31,7 +31,7 @@ const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 function mouseOverHandler(d, i) {
   d3.select(this)
     .attr("fill", function(d) {
-      if(wineProvinces.includes(mapObj[d.properties.ID]))
+        if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
         return "#8c1b0a";
       else
         return "white";
@@ -52,7 +52,7 @@ function mouseOverHandler(d, i) {
 
 function mouseOutHandler(d, i) {
   d3.select(this).attr("fill", function(d) {
-    if(wineProvinces.includes(mapObj[d.properties.ID]))
+      if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
       return "#fce8c9";
     else
       return "white";
@@ -74,31 +74,39 @@ const path = d3
 
 var g = svg.append("g");
 
+const dbRef = firebase.database().ref()
+
 // Need to check in original dataframe which regions are included in Southwest France
 // and France Other and clean this into correct province
 // Beaujolais is part of Bourgogne, need to add this to that province in python
-wineProvinces = ["Bordeaux", "Bourgogne", "Alsace", "Pays-de-la-Loire",
-  "Champagne-Ardenne", "Provence-Alpes-Côtes d'Azur", "Rhône-Alpes",
-  "Languedoc-Roussillon", "Southwest France", "Beaujolais", "France Other"];
+wineProvinces = [];
 
 d3.json("france.json").then(function(france) {
 
   //console.log(topojson.feature(france, france.objects.poly).features);
 
-	g.selectAll("path")
-    .data(topojson.feature(france, france.objects.poly).features)
-    .enter()
-    .append("path")
-    .attr("d", path)
-    .attr("fill", function(d) {
-      if(wineProvinces.includes(mapObj[d.properties.ID]))
-        return "#fce8c9";
-      else
-        return "white";
-    })
-    .style("stroke", "black")
-    .on("mouseover", mouseOverHandler)
-    .on("mouseout", mouseOutHandler);
+    g.selectAll("path")
+        .data(topojson.feature(france, france.objects.poly).features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("fill", "white")
+        .style("stroke", "black");
+
+    dbRef.once('value').then(function (snapshot) {
+        console.log(snapshot.val())
+        wineProvinces = snapshot.val();
+
+        g.selectAll("path")
+            .attr("fill", function (d) {
+                if (wineProvinces.some(p => p.name === mapObj[d.properties.ID]))
+                    return "#fce8c9";
+                else
+                    return "white";
+            })
+            .on("mouseover", mouseOverHandler)
+            .on("mouseout", mouseOutHandler);
+    });
 
     console.log(g);
 /* // This writes out all the country names on the map
