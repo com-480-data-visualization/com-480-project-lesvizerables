@@ -23,6 +23,7 @@ var mapObj = {
   FR82: "Provence-Alpes-Côtes d'Azur",
   FR71: "Rhône-Alpes"
 };
+var centered;
 
 const WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
 const OVERLAY_MULTIPLIER = 10;
@@ -44,10 +45,10 @@ function mouseOverHandler(d, i) {
       else
         return mapObj[d.properties.ID];
     })
-    .attr("transform", d => `translate(${path.centroid(d)})`)
+    /*.attr("transform", d => `translate(${path.centroid(d)})`)
     .attr("text-anchor", "middle")
     .attr("font-size", 10)
-    .attr("class","labels");
+    .attr("class","labels")*/;
   }
 
 function mouseOutHandler(d, i) {
@@ -57,6 +58,30 @@ function mouseOutHandler(d, i) {
     else
       return "white";
 });}
+
+function clicked(d, i) {
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+  } else {
+    x = WIDTH / 2;
+    y = HEIGHT / 2;
+    k = 1;
+    centered = null;
+  }
+  g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+}
+
 
 var svg = d3
   .select(".mapdiv")
@@ -82,14 +107,12 @@ wineProvinces = ["Bordeaux", "Bourgogne", "Alsace", "Pays-de-la-Loire",
   "Languedoc-Roussillon", "Southwest France", "Beaujolais", "France Other"];
 
 d3.json("france.json").then(function(france) {
-
-  //console.log(topojson.feature(france, france.objects.poly).features);
-
 	g.selectAll("path")
     .data(topojson.feature(france, france.objects.poly).features)
     .enter()
     .append("path")
     .attr("d", path)
+    .attr("class", "province")
     .attr("fill", function(d) {
       if(wineProvinces.includes(mapObj[d.properties.ID]))
         return "#fce8c9";
@@ -98,9 +121,9 @@ d3.json("france.json").then(function(france) {
     })
     .style("stroke", "black")
     .on("mouseover", mouseOverHandler)
-    .on("mouseout", mouseOutHandler);
+    .on("mouseout", mouseOutHandler)
+    .on("click", clicked);
 
-    console.log(g);
 /* // This writes out all the country names on the map
   g.selectAll("text")
     .data(topojson.feature(france, france.objects.poly).features)
