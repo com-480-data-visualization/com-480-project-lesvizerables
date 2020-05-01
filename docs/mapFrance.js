@@ -62,11 +62,11 @@ function mouseOutHandler(d, i) {
 function clicked(d, i) {
   var x, y, k;
 
-  if (d && centered !== d) {
+  if (d && centered !== d && wineProvinces.includes(mapObj[d.properties.ID])) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 4;
+    k = 3;
     centered = d;
   } else {
     x = WIDTH / 2;
