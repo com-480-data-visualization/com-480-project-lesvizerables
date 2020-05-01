@@ -38,7 +38,7 @@ const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 function mouseOverHandler(d, i) {
   d3.select(this)
     .attr("fill", function(d) {
-        if (mapObj[d.properties.ID].dataname)
+      if (mapObj[d.properties.ID].dataname)
         return "#8c1b0a";
       else
         return "white";
@@ -59,7 +59,7 @@ function mouseOverHandler(d, i) {
 
 function mouseOutHandler(d, i) {
   d3.select(this).attr("fill", function(d) {
-      if (mapObj[d.properties.ID].dataname)
+    if (mapObj[d.properties.ID].dataname)
       return "#fce8c9";
     else
       return "white";
@@ -68,7 +68,7 @@ function mouseOutHandler(d, i) {
 function clicked(d, i) {
   var x, y, k;
 
-    if (d && centered !== d && mapObj[d.properties.ID].dataname) {
+  if (d && centered !== d && mapObj[d.properties.ID].dataname) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
@@ -121,7 +121,7 @@ d3.json("france.json").then(function(france) {
         .attr("fill", "white")
         .style("stroke", "black");
 
-    dbRef.once('value').then(function (snapshot) {
+    dbRef.child('provinces').once('value').then(function (snapshot) {
         console.log(snapshot.val())
 
         g.selectAll("path")
