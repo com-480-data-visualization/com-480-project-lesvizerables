@@ -42,7 +42,7 @@
   padding: 10px;
 }
 
-.province .active {
+.province.active {
   fill: #FACDD4;
 }
 .province.active:hover{
@@ -67,6 +67,20 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.menu-line-current {
+  stroke: #BA4735;
+  stroke-width: 10;
+}
+
+.menu-line-noncurrent {
+  stroke: #fce8c9;
+  stroke-width:10;
+}
+
+.menu-line-noncurrent:hover {
+  stroke: #BA4735;/*#8c1b0a;*/
 }
 
 
