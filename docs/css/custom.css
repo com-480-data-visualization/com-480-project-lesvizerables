@@ -88,6 +88,13 @@
   padding-top:100px;
 }
 
+.page-content-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -144.85px;
+}
+
 /*HAMBURGER-MENU START*/
 .ham-menu {
   right: 35px;
