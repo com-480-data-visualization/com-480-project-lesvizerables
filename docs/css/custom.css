@@ -80,13 +80,67 @@
 }
 
 .menu-line-noncurrent:hover {
-  stroke: #BA4735;/*#8c1b0a;*/
+  stroke: #BA4735;
 }
 
 
 .text-page {
   padding-top:100px;
 }
+
+/*HAMBURGER-MENU START*/
+.ham-menu {
+  right: 35px;
+  overflow: hidden;
+  background-color: #fce8c9;
+  z-index:2;
+  top: 100px;
+}
+
+.nav-icon {
+  margin: 1em;
+  width: 40px;
+  position: absolute;
+  right: 35px;
+}
+
+.nav-icon:after,
+.nav-icon:before,
+.nav-icon div {
+  background-color: maroon;
+  border-radius: 3px;
+  content: '';
+  display: block;
+  height: 5px;
+  margin: 7px 0;
+  transition: all .2s ease-in-out;
+}
+
+.nav-icon:hover:before {
+  transform: translateY(12px) rotate(135deg);
+}
+
+.nav-icon:hover:after {
+  transform: translateY(-12px) rotate(-135deg);
+}
+
+.nav-icon:hover div {
+  transform: scale(0);
+}
+
+@media(min-width: 0) {
+  .ham-menu {
+    display: none;
+  }
+
+  .ham-menu.toggleCls {
+    display: block;
+    position: absolute;
+    z-index: 2;
+  }
+}
+
+/*HAMBURGER-MENU END*/
 
 
 table {
