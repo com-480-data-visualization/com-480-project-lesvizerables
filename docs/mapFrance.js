@@ -30,6 +30,13 @@ var mapObj = {
 };
 var centered;
 
+// Idea on something that we could do to make it a bit more fun 
+var funfacts = {
+  FR26: "Bourgogne has the second highest rating of the wines in our dataset and the second highest average price.",
+  FR21: "Champagne-Ardenne has the highest rating of the wines in our dataset and also the highest average price.",
+  FR53: "Pointou-Charantes has the lowest rating of the wines in our dataset and also the lowest average price."
+}
+
 const WIDTH = window.innerWidth*0.9, HEIGHT = window.innerHeight;
 const OVERLAY_MULTIPLIER = 10;
 const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
@@ -94,12 +101,17 @@ function clicked(d, i) {
     dbRef.child('province_info').once('value').then(function (snapshot) {
       data = snapshot.val();
       for (obj in data) {
-        if(data[obj].province == mapObj[d.properties.ID].dataname)
+        if(data[obj].province == mapObj[d.properties.ID].dataname){
           document.getElementById("prov-info").innerHTML =
             "<b>Number of varieties: </b>" + data[obj].variety +
             "<br/><b>Number of regions: </b>" + data[obj].region +
             "<br/><b>Average price of wines: </b>" + Math.round(data[obj].price) +
             " €<br/><b>Average points of wines: </b>" + Math.round(data[obj].points) + "/100";
+          if(funfacts[d.properties.ID])
+            document.getElementById("prov-funfact").innerHTML = "<b>Fun fact: </b>" + funfacts[d.properties.ID];
+          else
+            document.getElementById("prov-funfact").innerHTML = "";
+        }
       }
     })
   }
@@ -107,6 +119,7 @@ function clicked(d, i) {
     document.getElementById("prov-name").innerHTML = "Provinces";
     document.getElementById("prov-teaser").innerHTML = "Click on a wine province to get information about it.";
     document.getElementById("prov-info").innerHTML = "";
+    document.getElementById("prov-funfact").innerHTML = "";
   }
 }
 
