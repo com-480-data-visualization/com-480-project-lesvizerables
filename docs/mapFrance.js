@@ -86,6 +86,28 @@ function clicked(d, i) {
   g.transition()
     .duration(750)
     .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+
+  if(centered == d){
+    document.getElementById("prov-name").innerHTML = mapObj[d.properties.ID].realname;
+    document.getElementById("prov-teaser").innerHTML = mapObj[d.properties.ID].realname + " has the following statistics: ";
+
+    dbRef.child('province_info').once('value').then(function (snapshot) {
+      data = snapshot.val();
+      for (obj in data) {
+        if(data[obj].province == mapObj[d.properties.ID].dataname)
+          document.getElementById("prov-info").innerHTML =
+            "<b>Number of varieties: </b>" + data[obj].variety +
+            "<br/><b>Number of regions: </b>" + data[obj].region +
+            "<br/><b>Average price of wines: </b>" + Math.round(data[obj].price) +
+            " €<br/><b>Average points of wines: </b>" + Math.round(data[obj].points) + "/100";
+      }
+    })
+  }
+  else{
+    document.getElementById("prov-name").innerHTML = "Provinces";
+    document.getElementById("prov-teaser").innerHTML = "Click on a wine province to get information about it.";
+    document.getElementById("prov-info").innerHTML = "";
+  }
 }
 
 var svg = d3
@@ -107,11 +129,10 @@ const path = d3
 
 var g = svg.append("g");
 
-const dbRef = firebase.database().ref()
+const dbRef = firebase.database().ref();
 
 d3.json("france.json").then(function(france) {
   //console.log(topojson.feature(france, france.objects.poly).features);
-  console.log("hej");
 
     g.selectAll("path")
         .data(topojson.feature(france, france.objects.poly).features)
@@ -130,7 +151,6 @@ d3.json("france.json").then(function(france) {
                 if (mapObj[d.properties.ID].dataname)
                     return "#fce8c9";
                 else
-                    console.log(d.properties.ID);
                     return "white";
             })
             .on("mouseover", mouseOverHandler)

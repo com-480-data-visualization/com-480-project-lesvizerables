@@ -34,7 +34,6 @@
 }
 
 */
-
 .mapdiv {
   height: 100%;
   width: 100%;
@@ -44,6 +43,8 @@
   float:right;
   padding: 10px;
 }
+
+/* CLICKED PROVINCE CSS */
 
 .province.active {
   fill: #FACDD4;
@@ -55,6 +56,17 @@
   fill: #FACDD4;
 }
 
+/* PROVINCE INFO */
+
+#prov-info-div{
+  margin-top: 30px;
+  width: 100%;
+}
+#prov-name{
+  
+}
+
+
 .svg-container {
   display: inline-block;
   position: relative;
@@ -64,7 +76,6 @@
   vertical-align: top;
   overflow: hidden;
 }
-
 .svg-content {
   display: inline-block;
   position: absolute;
@@ -86,7 +97,6 @@
   stroke: #BA4735;
 }
 
-
 .text-page {
   padding-top:100px;
 }
@@ -99,6 +109,7 @@
 }
 
 /*HAMBURGER-MENU START*/
+
 .ham-menu {
   right: 35px;
   overflow: hidden;
@@ -152,10 +163,8 @@
 
 /*HAMBURGER-MENU END*/
 
-
 table {
   width: 350px;
-
 }
 
 th, td {
