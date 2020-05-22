@@ -6,25 +6,25 @@
 
 var mapObj = {
   FR42: {realname: "Alsace", dataname: "Alsace"},
-  FR61: {realname: "Aquitaine", dataname: null},
+  FR61: {realname: "Aquitaine", dataname: "Aquitaine"},
   FR72: {realname: "Auvergne", dataname: null},
   FR25: {realname: "Basse-Normandie", dataname: null},
   FR26: {realname: "Bourgogne", dataname: "Burgundy"},
   FR52: {realname: "Bretagne", dataname: null},
   FR24: {realname: "Centre", dataname: null},
   FR21: {realname: "Champagne-Ardenne", dataname: "Champagne"},
-  FR83: {realname: "Corse", dataname: null},
-  FR43: {realname: "Franche-Comté", dataname: null},
+  FR83: {realname: "Corse", dataname: "Corse"},
+  FR43: {realname: "Franche-Comté", dataname: "Franche-Comté"},
   FR23: {realname: "Haute-Normandie", dataname: null},
   FR10: {realname: "Ile-de-France", dataname: null},
   FR81: {realname: "Languedoc-Roussillon", dataname: "Languedoc-Roussillon"},
   FR63: {realname: "Limousin", dataname: null},
   FR41: {realname: "Lorraine", dataname: null},
-  FR62: {realname: "Midi-Pyrénées", dataname: null},
+  FR62: {realname: "Midi-Pyrénées", dataname: "Midi Pyrénées"},
   FR30: {realname: "Nord-Pas-de-Calais", dataname: null},
   FR51: {realname: "Pays-de-la-Loire", dataname: "Loire Valley"},
   FR22: {realname: "Picardie", dataname: null},
-  FR53: {realname: "Poitou-Charantes", dataname: null},
+  FR53: {realname: "Poitou-Charantes", dataname: "Poitou-Charentes"},
   FR82: {realname: "Provence-Alpes-Côtes d'Azur", dataname: "Provence"},
   FR71: {realname: "Rhône-Alpes", dataname: "Rhône Valley"}
 };
@@ -111,6 +111,7 @@ const dbRef = firebase.database().ref()
 
 d3.json("france.json").then(function(france) {
   //console.log(topojson.feature(france, france.objects.poly).features);
+  console.log("hej");
 
     g.selectAll("path")
         .data(topojson.feature(france, france.objects.poly).features)
@@ -121,14 +122,15 @@ d3.json("france.json").then(function(france) {
         .attr("fill", "white")
         .style("stroke", "black");
 
-    dbRef.child('provinces').once('value').then(function (snapshot) {
-        console.log(snapshot.val())
+    dbRef.child('province_names').once('value').then(function (snapshot) {
+        console.log(snapshot.val());
 
         g.selectAll("path")
             .attr("fill", function (d) {
                 if (mapObj[d.properties.ID].dataname)
                     return "#fce8c9";
                 else
+                    console.log(d.properties.ID);
                     return "white";
             })
             .on("mouseover", mouseOverHandler)
