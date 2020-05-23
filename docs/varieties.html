@@ -30,6 +30,9 @@
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
 
+  <!-- Hamburger menu-->
+  <script src="hammenu.js"></script>
+
   <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
@@ -70,15 +73,26 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">
+              <!-- hamburger menu-->
+              <nav>
+                <button class="nav-icon" onclick="toggleClass()">
+                  <div>
+                  </div>
+                </button>
+                <ul class="ham-menu">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="varieties.html">Varieties</a></li>
+                  <li><a href="searchengine.html">Search engine</a></li>
+                  <li><a href="thedata.html">The Data</a></li>
+                </ul>
+              </nav>
+              <!-- hamburger menu end-->
               <h2 class="heading">Varieties</h2>
               <svg viewbox="0 0 970 10">
                 <a href="index.html"><line class="menu-line-noncurrent" x1="35px" y1="0", x2="335px", y2="0"/></a>
                 <a href="varieties.html"><line class="menu-line-current" x1="335px" y1="0", x2="635px", y2="0"/></a>
                 <a href="searchengine.html"><line class="menu-line-noncurrent" x1="635px" y1="0", x2="935px", y2="0"/></a>
               </svg>
-              <p>
-                <a href ="thedata.html"><b>The Data</b></a>
-              </p>
               </div>
               <div class="col-md-8">
                 <div id="container" class="svg-container">

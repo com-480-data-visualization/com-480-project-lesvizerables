@@ -1,39 +1,4 @@
 /*put your styles here*/
-
-/* CODE FOR ARROW -- DELETE BEFORE DELIVERY (?)
-.arrow {
-    position:relative;
-    width:200px;
-    margin:25px auto;
-    height:0;
-    border-bottom:5px solid black;
-}
-
-.right{
-    content: '';
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 30px solid black;
-    position: absolute;
-    right: -10px;
-    top: -17px;
-}
-
-.left{
-    content: '';
-    width: 0;
-	height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-right: 30px solid black;
-    position: absolute;
-    left: -10px;
-    top: -17px;
-}
-
-*/
 .mapdiv {
   height: 100%;
   width: 100%;
@@ -63,7 +28,7 @@
   width: 100%;
 }
 #prov-name{
-  
+
 }
 
 
@@ -111,16 +76,34 @@
 /*HAMBURGER-MENU START*/
 
 .ham-menu {
-  right: 35px;
-  overflow: hidden;
-  background-color: #fce8c9;
+  list-style-type: none;
+  width: 157.5px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  top: 60px;
+  right: 0;
   z-index:2;
-  top: 100px;
+  background-color: #fce8c9;
+  border-color: maroon;
+  border-width: 2px;
+  border-style: solid;
+  text-align: center;
+}
+
+.ham-menu li {
+  padding-top: 5px;
+}
+
+.ham-menu li a{
+  color: maroon;
 }
 
 .nav-icon {
+  background-color: white;
+  border: none;
   margin: 1em;
-  width: 40px;
+  width: 45px;
   position: absolute;
   right: 35px;
 }
@@ -137,16 +120,8 @@
   transition: all .2s ease-in-out;
 }
 
-.nav-icon:hover:before {
-  transform: translateY(12px) rotate(135deg);
-}
-
-.nav-icon:hover:after {
-  transform: translateY(-12px) rotate(-135deg);
-}
-
-.nav-icon:hover div {
-  transform: scale(0);
+.nav-icon:focus {
+  outline: 0;
 }
 
 @media(min-width: 0) {
@@ -154,10 +129,22 @@
     display: none;
   }
 
-  .ham-menu.toggleCls {
+  .ham-menu.toggleMenu {
     display: block;
     position: absolute;
     z-index: 2;
+  }
+
+  .nav-icon.toggleIcon:after {
+    transform: translateY(-12px) rotate(-135deg);
+  }
+
+  .nav-icon.toggleIcon:before {
+    transform: translateY(12px) rotate(135deg);
+  }
+
+  .nav-icon.toggleIcon div {
+    transform: scale(0);
   }
 }
 

@@ -20,9 +20,12 @@
     <link rel="stylesheet" href="css/ekko-lightbox.css">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
-	<!-- Load D3 library-->
-	<script src="lib/d3.min.js"></script>
-	<script src="https://unpkg.com/topojson-client@3"></script>
+  	<!-- Load D3 library-->
+  	<script src="lib/d3.min.js"></script>
+  	<script src="https://unpkg.com/topojson-client@3"></script>
+
+    <!-- Hamburger menu-->
+    <script src="hammenu.js"></script>
 
     <!-- Favicon-->
     <!--link rel="shortcut icon" href="favicon.png"-->
@@ -49,18 +52,26 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">
+              <!-- hamburger menu-->
+              <nav>
+                <button class="nav-icon" onclick="toggleClass()">
+                  <div>
+                  </div>
+                </button>
+                <ul class="ham-menu">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="varieties.html">Varieties</a></li>
+                  <li><a href="searchengine.html">Search engine</a></li>
+                  <li><a href="thedata.html">The Data</a></li>
+                </ul>
+              </nav>
+              <!-- hamburger menu end-->
               <h2 class="heading">Search Engine</h2>
               <svg viewbox="0 0 970 10">
                 <a href="index.html"><line class="menu-line-noncurrent" x1="35px" y1="0", x2="335px", y2="0"/></a>
                 <a href="varieties.html"><line class="menu-line-noncurrent" x1="335px" y1="0", x2="635px", y2="0"/></a>
                 <a href="searchengine.html"><line class="menu-line-current" x1="635px" y1="0", x2="935px", y2="0"/></a>
               </svg>
-              <div class="col-md-6">
-                <a href ="thedata.html"><b>The Data</b></a>
-              </div>
-              <div class="col-md-6" style="text-align:right">
-                <a href="index.html"><b>Home</b></a>
-              </div>
               <p>
                 Here the search bars will be put where information from the data will be collected from the database.
               </p>
