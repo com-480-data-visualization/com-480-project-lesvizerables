@@ -88,6 +88,13 @@
             </div>
             <div class="col-md-4">
               <h4 class="heading">Province name</h3>
+                <script>
+                  dbRef.child('varieties_info').once('value').then(function (snapshot) {
+                    console.log(snapshot.val().filter(function(item){
+                      return item.province == "Alsace"
+                    }));
+                  });
+                </script>
                 <table>
                   <tr>
                     <th>
