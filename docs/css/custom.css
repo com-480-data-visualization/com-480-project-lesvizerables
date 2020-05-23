@@ -78,7 +78,7 @@
 .ham-menu {
   list-style-type: none;
   width: 157.5px;
-  height: 100%;
+  height: 150px;
   margin: 0;
   padding: 0;
   top: 60px;
@@ -92,7 +92,7 @@
 }
 
 .ham-menu li {
-  padding-top: 5px;
+  padding-top: 10px;
 }
 
 .ham-menu li a{
