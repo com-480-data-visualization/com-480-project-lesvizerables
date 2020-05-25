@@ -25,7 +25,7 @@
   	<script src="https://unpkg.com/topojson-client@3"></script>
 
     <!-- Hamburger menu-->
-    <script src="hammenu.js"></script>
+    <script src="custom.js"></script>
 
     <!-- Favicon-->
     <!--link rel="shortcut icon" href="favicon.png"-->
@@ -72,9 +72,15 @@
                 <a href="varieties.html"><line class="menu-line-noncurrent" x1="335px" y1="0", x2="635px", y2="0"/></a>
                 <a href="searchengine.html"><line class="menu-line-current" x1="635px" y1="0", x2="935px", y2="0"/></a>
               </svg>
-              <p>
-                Here the search bars will be put where information from the data will be collected from the database.
-              </p>
+              <!-- search bar -->
+              <div class="dropdown">
+                <button onclick="openDropdown()" class="dropbtn">Province</button>
+                  <div id="searchDropdown" class="dropdown-content">
+                    <a href="#">Link 1</a>
+                  </div>
+              </div>
+
+              <!-- search bar end -->
             </div>
           </div>
         </div>
