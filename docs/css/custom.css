@@ -31,7 +31,6 @@
 
 }
 
-
 .svg-container {
   display: inline-block;
   position: relative;
@@ -48,6 +47,7 @@
   left: 0;
 }
 
+/* NAVIGATION LINE */
 .menu-line-current {
   stroke: #BA4735;
   stroke-width: 10;
@@ -61,6 +61,7 @@
 .menu-line-noncurrent:hover {
   stroke: #BA4735;
 }
+/* NAVIGATION LINE END*/
 
 .text-page {
   padding-top:100px;
@@ -149,6 +150,78 @@
 }
 
 /*HAMBURGER-MENU END*/
+
+/* DROPDOWN MENU*/
+
+/* Dropdown Button */
+.dropfield {
+  background-color: #fce8c9;
+  color: maroon;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  justify-content: right;
+}
+
+.dropfield::placeholder {
+  color: #BA4735;
+}
+
+/* Dropdown button on hover & focus */
+.dropfield:hover, .dropbtn:focus {
+  background-color: #fce8c9;
+  outline-color: maroon;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+.show {
+  display: block;
+}
+
+.searchbtn {
+  width: 300px;
+  height: 50px;
+  color: white;
+  background-color: maroon;
+  display: block;
+  border:none;
+  margin-top: 50px;
+}
+
+.searchbtn:focus {
+  outline: none;
+}
+
+
+/*DROPDOWN MENU END*/
 
 table {
   width: 350px;
