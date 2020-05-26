@@ -41,7 +41,6 @@ function to_search_page(event) {
   window.location.href = encodeURI("searchengine.html?" + "variety=" + this.innerText);
 };
 
-
 function renderVarieties(d){
   var dataname = mapObj[d.properties.ID].dataname;
   var varieties = dataCache.filter(
