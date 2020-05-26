@@ -289,12 +289,12 @@ table, tr, td:last-child {
   fill: #fce8c9;
 }
 
-.bar:hover{
+.bar:active{
   fill: maroon;
 }
 
 .axis {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
 }
 
 .axis path,
