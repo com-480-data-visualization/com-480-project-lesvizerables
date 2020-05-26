@@ -13,14 +13,27 @@ function getUrlVars() {
           vars.push(hash[0]);
           vars[hash[0]] = hash[1];
       }
-      console.log(vars);
-      console.log('hej');
       // Return arguments
       return vars;
     }
 };
 
 var allVars = getUrlVars();
+
+//Extract the variety if there exists one
+if(allVars) {
+  var variety = "";
+  // Handle if variety includes several words
+  var hashes = allVars.variety.split('%20');
+  for(var i = 0; i < hashes.length; i++) {
+    variety += hashes[i];
+    if(i < hashes.length) variety += " ";
+  }
+  // Add variety to search query and show results
+}
+else {
+  // Otherwise show search engine without any input
+}
 
 // Sets the options of the dropdown menu and once an alternative is selected, the text field is changed
 function edit_value(event) {
