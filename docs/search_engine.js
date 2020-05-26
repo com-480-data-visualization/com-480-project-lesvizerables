@@ -1,6 +1,5 @@
 
 const dbRef = firebase.database().ref();
-
 var allVars = getUrlVars();
 
 function load_search_engine(){
@@ -55,6 +54,7 @@ function load_dropdowns() {
 function set_prov_dropdown(region, variety) {
   document.getElementById("prov_input").value = "";
 
+  // If variety already entered, show only provinces with chosen variety
   if(variety) {
     dbRef.child('varieties_info').once('value').then(function (snapshot) {
       dataCache = snapshot.val();
@@ -71,6 +71,11 @@ function set_prov_dropdown(region, variety) {
       }
     });
   }
+  // If region already entered, show only province for chosen region
+  else if(region) {
+    //New df needed
+  }
+  // If no values entered, show all provinces
   else {
     dbRef.child('province_names').once('value').then(function (snapshot) {
       dataCache = snapshot.val();
@@ -89,6 +94,7 @@ function set_reg_dropdown(province, variety) {
   document.getElementById("reg_input").value = "";
   var regions;
 
+  // If province & variety already entered, show regions that fit with entered values
   if(province && variety) {
     dbRef.child('prov_varieties').once('value').then(function (snapshot) {
       dataCache = snapshot.val();
@@ -106,8 +112,9 @@ function set_reg_dropdown(province, variety) {
       }
     });
   }
+  // If variety already entered, show only regions with chosen variety
   else if(variety){
-    //New df needed 
+    //New df needed
   }
   else {
     dbRef.child('province_info').once('value').then(function (snapshot) {
@@ -158,10 +165,11 @@ function set_var_dropdown(province, region) {
       }
     });
   }
+  // If region already entered, show only varieties in chosen region
   else if (region) {
     // Need new df?
   }
-  // If province not entered, show all regions
+  // If province or region not entered, show all varieties
   else {
     dbRef.child('varieties_info').once('value').then(function (snapshot) {
       dataCache = snapshot.val();
