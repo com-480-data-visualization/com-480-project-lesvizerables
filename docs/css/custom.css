@@ -137,6 +137,11 @@
   padding: 15px;
   outline-color: maroon;
 }
+
+.dropfield:focus {
+  outline-color: maroon;
+}
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
@@ -146,22 +151,25 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color:  #f1f1f1; 
   min-width: 150px;
+  max-height: 100px;
+  overflow-y: scroll;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 /* Links inside the dropdown */
 .dropdown-content a {
   color: black;
-  font-size: 10px;
+  font-size: 12px;
   padding: 5px 16px;
   text-decoration: none;
   display: block;
 }
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd
+  background-color:  #BA4735;
+  color: white;
 }
 .show {
   display: block;
@@ -215,7 +223,8 @@
 
 /* Table stuff */
 table {
-  width: 350px;
+  margin-top: 30px;
+  width: 970px;
 }
 th, td {
   text-align: center;
