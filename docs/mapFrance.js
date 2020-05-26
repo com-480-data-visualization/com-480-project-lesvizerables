@@ -9,10 +9,10 @@ var mapObj = {
   FR61: {realname: "Aquitaine", dataname: "Aquitaine"},
   FR72: {realname: "Auvergne", dataname: null},
   FR25: {realname: "Basse-Normandie", dataname: null},
-  FR26: {realname: "Bourgogne", dataname: "Burgundy"},
+  FR26: {realname: "Bourgogne", dataname: "Bourgogne"},
   FR52: {realname: "Bretagne", dataname: null},
   FR24: {realname: "Centre", dataname: null},
-  FR21: {realname: "Champagne-Ardenne", dataname: "Champagne"},
+  FR21: {realname: "Champagne-Ardenne", dataname: "Champagne-Ardenne"},
   FR83: {realname: "Corse", dataname: "Corse"},
   FR43: {realname: "Franche-Comté", dataname: "Franche-Comté"},
   FR23: {realname: "Haute-Normandie", dataname: null},
@@ -20,13 +20,13 @@ var mapObj = {
   FR81: {realname: "Languedoc-Roussillon", dataname: "Languedoc-Roussillon"},
   FR63: {realname: "Limousin", dataname: null},
   FR41: {realname: "Lorraine", dataname: null},
-  FR62: {realname: "Midi-Pyrénées", dataname: "Midi Pyrénées"},
+  FR62: {realname: "Midi-Pyrénées", dataname: "Midi-Pyrénées"},
   FR30: {realname: "Nord-Pas-de-Calais", dataname: null},
-  FR51: {realname: "Pays-de-la-Loire", dataname: "Loire Valley"},
+  FR51: {realname: "Pays-de-la-Loire", dataname: "Pays-de-la-Loire"},
   FR22: {realname: "Picardie", dataname: null},
   FR53: {realname: "Poitou-Charantes", dataname: "Poitou-Charentes"},
-  FR82: {realname: "Provence-Alpes-Côtes d'Azur", dataname: "Provence"},
-  FR71: {realname: "Rhône-Alpes", dataname: "Rhône Valley"}
+  FR82: {realname: "Provence-Alpes-Côtes d'Azur", dataname: "Provence-Alpes-Côtes d'Azur"},
+  FR71: {realname: "Rhône-Alpes", dataname: "Rhône-Alpes"}
 };
 var centered;
 

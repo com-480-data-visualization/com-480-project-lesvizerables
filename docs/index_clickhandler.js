@@ -28,10 +28,10 @@ function renderStatistics(d){
      if(dataCache[obj].province == mapObj[d.properties.ID].dataname){
        var p = dataCache[obj];
        document.getElementById("prov-info").innerHTML =
-         "<b>Number of varieties: </b>" + p.variety +
-         "<br/><b>Number of regions: </b>" + p.region +
-         "<br/><b>Average price of wines: </b>" + Math.round(p.price) +
-         " €<br/><b>Average points of wines: </b>" + Math.round(p.points) + "/100";
+         "<b>Number of varieties: </b>" + p.n_varieties +
+         "<br/><b>Number of regions: </b>" + p.n_regions +
+         "<br/><b>Average price of wines: </b>" + p.avg_price +
+         " €<br/><b>Average points of wines: </b>" + p.avg_points + "/10";
        if(funfacts[d.properties.ID])
          document.getElementById("prov-funfact").innerHTML = "<b>Fun fact: </b>" + funfacts[d.properties.ID];
        else

@@ -1,15 +1,17 @@
 var dataCache;
+//const dbRef = firebase.database().ref();
 
 function handleClick(centered, d){
   if(centered == d){
     document.getElementById("prov-name").innerHTML = mapObj[d.properties.ID].realname;
     document.getElementById("prov-teaser").innerHTML = mapObj[d.properties.ID].realname + " produces the following varieties of wine: ";
-
+    console.log(dataCache);
     if(dataCache){
       renderVarieties(d);
     }
     else{
-      dbRef.child('varieties_info').once('value').then(function (snapshot) {
+      dbRef.child('prov_varieties').once('value').then(function (snapshot) {
+        console.log(snapshot.val());
         dataCache = snapshot.val();
         renderVarieties(d);
       });
@@ -39,6 +41,6 @@ function renderVarieties(d){
     var v = varieties[i];
     document.getElementById("varietyTable").innerHTML +=
       "<tr><td><a class='variety_name' onclick='javascript:to_search_page.call(this, event);'>"
-      + v.variety + "</a></td><td>" + v.region + "</th></tr>";
+      + v.variety + "</a></td><td>" + v.regions + "</th></tr>";
   }
 }
