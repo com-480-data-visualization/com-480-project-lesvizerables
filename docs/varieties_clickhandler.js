@@ -49,7 +49,7 @@ function renderVarieties(d){
                     });
 
   document.getElementById("varietyTable").innerHTML =
-  "<tr><th>Varieties</th><th>Regions</th></tr>"
+  "<tr><th>VARIETIES</th><th>REGIONS</th></tr>"
   for (i in varieties) {
     var v = varieties[i];
     document.getElementById("varietyTable").innerHTML +=

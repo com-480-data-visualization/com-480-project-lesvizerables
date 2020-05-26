@@ -193,6 +193,7 @@
   color: black;
   text-decoration: underline;
   text-decoration-color: #FACDD4;
+  text-decoration-style: wavy;
 }
 .link:hover {
   cursor: pointer;
@@ -225,15 +226,23 @@
 /* VARIETIES PAGE */
 
 /* Table stuff */
+#var-table-div {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  align-self: center;
+  align-items: center;
+}
 table {
   margin-top: 30px;
-  width: 970px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 th, td {
   text-align: center;
-  padding:10px;
+  padding: 10px;
 }
-table,th, td {
+table, th, td {
   border: 1px solid #000;
   border-collapse: collapse;
   table-layout: fixed;
