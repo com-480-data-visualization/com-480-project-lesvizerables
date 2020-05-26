@@ -5,13 +5,11 @@ function handleClick(centered, d){
   if(centered == d){
     document.getElementById("prov-name").innerHTML = mapObj[d.properties.ID].realname;
     document.getElementById("prov-teaser").innerHTML = mapObj[d.properties.ID].realname + " produces the following varieties of wine: ";
-    console.log(dataCache);
     if(dataCache){
       renderVarieties(d);
     }
     else{
       dbRef.child('prov_varieties').once('value').then(function (snapshot) {
-        console.log(snapshot.val());
         dataCache = snapshot.val();
         renderVarieties(d);
       });
