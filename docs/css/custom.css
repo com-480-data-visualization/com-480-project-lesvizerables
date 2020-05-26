@@ -275,7 +275,6 @@ table, tr, td:last-child {
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: 500px;
   vertical-align: top;
   overflow: hidden;
 }
@@ -287,11 +286,11 @@ table, tr, td:last-child {
 }
 
 .bar{
-  fill: steelblue;
+  fill: #fce8c9;
 }
 
 .bar:hover{
-  fill: brown;
+  fill: maroon;
 }
 
 .axis {

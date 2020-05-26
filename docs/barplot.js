@@ -1,7 +1,7 @@
 
 var margin = {top: 20, right: 20, bottom: 20, left: 20},
-    width = 500 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 370 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
 var x = d3.scaleBand().rangeRound([0, width]).padding(0.05);
 
@@ -55,13 +55,10 @@ d3.json("barplot.json").then(function(data) {
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      //.attr("x", function(d) {console.log(d.province); return x(d.province);})
-      .attr("x", (d) => {return x(d.province)})
+      .attr("x", function(d) {return x(d.province);})
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})
-      .attr("height", function(d) {return height - y(d.n_varieties); });
-
-
+      .attr("height", function(d) {return height - y(d.n_varieties);});
 });
 
 
