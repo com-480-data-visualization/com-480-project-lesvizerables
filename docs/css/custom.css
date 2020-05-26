@@ -215,6 +215,7 @@
 
 /* Table stuff */
 table {
+  margin-top: 30px;
   width: 970px;
 }
 th, td {
