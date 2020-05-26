@@ -19,6 +19,7 @@ function getUrlVars() {
 };
 
 var allVars = getUrlVars();
+
 function load_search_engine(){
   //Extract the variety if there exists one
   if(allVars) {
@@ -33,6 +34,9 @@ function load_search_engine(){
     // Add variety to search query and show results
     document.getElementById("var_input").value = variety;
     document.getElementById("var_input").style = "color:black;"
+
+    // Show results
+    document.getElementById("searchbtn").click();
   }
   // Load the dropdown values
   load_dropdowns();
@@ -52,6 +56,7 @@ function load_dropdowns() {
       document.getElementById("province_dropfield").appendChild(newcontent.firstChild);
     }
   });
+  // Sets the options of the regions dropdown menu
 
 };
 
@@ -59,4 +64,16 @@ function load_dropdowns() {
 function edit_prov_val(event) {
   document.getElementById("prov_input").value = this.innerText;
   document.getElementById("prov_input").style = "color:black;"
+};
+
+//Search for results with textfield inputs
+function search_results(event) {
+  var province = document.getElementById("prov_input").value;
+  var region = document.getElementById("reg_input").value;
+  var variety = document.getElementById("var_input").value;
+  var price = document.getElementById("price_input").value;
+  var points = document.getElementById("points_input").value;
+
+  // Check for input and do something with input
+  console.log('button clicked');
 };
