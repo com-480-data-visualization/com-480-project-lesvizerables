@@ -39,6 +39,6 @@ function renderVarieties(d){
     var v = varieties[i];
     document.getElementById("varietyTable").innerHTML +=
       "<tr><td><a class='link' onclick='javascript:to_search_page.call(this, event);'>"
-      + v.variety + "</a></td><td>" + v.regions.join("<br/>") + "</th></tr>";
+      + v.variety + "</a></td><td>" + v.regions.filter(Boolean).join("<br/>") + "</th></tr>";
   }
 }
