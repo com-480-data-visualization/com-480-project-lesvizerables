@@ -38,7 +38,7 @@ function renderVarieties(d){
   for (i in varieties) {
     var v = varieties[i];
     document.getElementById("varietyTable").innerHTML +=
-      "<tr><td><a class='variety_name' onclick='javascript:to_search_page.call(this, event);'>"
+      "<tr><td><a class='link' onclick='javascript:to_search_page.call(this, event);'>"
       + v.variety + "</a></td><td>" + v.regions + "</th></tr>";
   }
 }

@@ -36,7 +36,7 @@ function renderStatistics(d){
          "<br/><b>Number of regions: </b>" + p.n_regions +
          "<br/><b>Average price of wines: </b>" + p.avg_price +
          " €<br/><b>Average points of wines: </b>" + p.avg_points + "/10" +
-         "<br/><a href='varieties.html?province="+d.properties.ID+"'>See varieties in this province</a>";
+         "<br/><a class='link' href='varieties.html?province="+d.properties.ID+"'>See varieties in this province</a>";
        if(funfacts[d.properties.ID])
          document.getElementById("prov-funfact").innerHTML = "<b>Fun fact: </b>" + funfacts[d.properties.ID];
        else

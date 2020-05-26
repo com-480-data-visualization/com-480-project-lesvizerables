@@ -181,6 +181,16 @@
 
 /* FRANCE MAP PAGES */
 
+.link{
+  text-decoration: underline;
+}
+.link:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  align-self: center;
+}
+
 /*Clicked province*/
 .province.active {
   fill: #FACDD4;
@@ -238,7 +248,7 @@ table, tr, td:last-child {
   cursor: pointer;
   font-size: 15px;
   font-weight: bold;
-  color: #FACDD4;
+  color: black;
   text-decoration: none;
   align-self: center;
 }
