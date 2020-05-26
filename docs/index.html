@@ -31,7 +31,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
 
     <!-- Hamburger menu-->
-    <script src="hammenu.js"></script>
+    <script src="custom.js"></script>
 
     <script>
         // Your web app's Firebase configuration
@@ -75,21 +75,20 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-
               <!-- hamburger menu-->
-              <div class="nav-icon" onclick="toggleClass()">
-                <div>
-
-                </div>
-              </div>
               <nav>
+                <button class="nav-icon" onclick="toggleHammenu()">
+                  <div>
+                  </div>
+                </button>
                 <ul class="ham-menu">
                   <li><a href="index.html">Home</a></li>
+                  <li><a href="varieties.html">Varieties</a></li>
+                  <li><a href="searchengine.html">Search engine</a></li>
                   <li><a href="thedata.html">The Data</a></li>
                 </ul>
               </nav>
               <!-- hamburger menu end-->
-
               <h2 class="heading">Wines of France</h2>
                 <svg viewbox="0 0 970 10">
                   <a href="index.html"><line class="menu-line-current" x1="35px" y1="0", x2="335px", y2="0"/></a>

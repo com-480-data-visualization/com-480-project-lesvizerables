@@ -30,7 +30,7 @@ var mapObj = {
 };
 var centered;
 
-// Idea on something that we could do to make it a bit more fun 
+// Idea on something that we could do to make it a bit more fun
 var funfacts = {
   FR26: "Bourgogne has the second highest rating of the wines in our dataset and the second highest average price.",
   FR21: "Champagne-Ardenne has the highest rating of the wines in our dataset and also the highest average price.",
@@ -58,10 +58,6 @@ function mouseOverHandler(d, i) {
       else
         return mapObj[d.properties.ID].realname;
     })
-    /*.attr("transform", d => `translate(${path.centroid(d)})`)
-    .attr("text-anchor", "middle")
-    .attr("font-size", 10)
-    .attr("class","labels")*/;
   }
 
 function mouseOutHandler(d, i) {

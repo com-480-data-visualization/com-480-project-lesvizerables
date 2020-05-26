@@ -21,6 +21,11 @@ function handleClick(centered, d){
   }
 }
 
+function to_search_page(event) {
+  window.location.href = "searchengine.html?" + "variety=" + this.innerText;
+};
+
+
 function renderVarieties(d){
   var dataname = mapObj[d.properties.ID].dataname
   var varieties = dataCache.filter(
@@ -32,6 +37,8 @@ function renderVarieties(d){
   "<tr><th>Varieties</th><th>Regions</th></tr>"
   for (i in varieties) {
     var v = varieties[i];
-    document.getElementById("varietyTable").innerHTML += "<tr><td>" + v.variety + "</td><td>" + v.region + "</th></tr>";
+    document.getElementById("varietyTable").innerHTML +=
+      "<tr><td><a class='variety_name' onclick='javascript:to_search_page.call(this, event);'>"
+      + v.variety + "</a></td><td>" + v.region + "</th></tr>";
   }
 }
