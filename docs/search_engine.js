@@ -9,6 +9,7 @@ function load_search_engine(){
     var variety = "";
     // Handle if variety includes several words
     var hashes = allVars.variety.split('%20');
+
     for(var i = 0; i < hashes.length; i++) {
       variety += hashes[i];
       if(i < hashes.length) variety += " ";
@@ -44,18 +45,37 @@ function load_dropdowns() {
   // Sets the options of the regions dropdown menu
   dbRef.child('province_info').once('value').then(function (snapshot) {
     dataCache = snapshot.val();
+    var province, regions;
 
-    for (obj in dataCache) {
-      //console.log(dataCache[obj]);
-      var province;
+    // Reset dropdown
+    document.getElementById("region_dropfield").innerHTML = "";
 
-      if(document.getElementById("prov_input").value)
-        province = document.getElementById("prov_input").value;
+    // Get province name if already set
+    if(document.getElementById("prov_input").value)
+      province = document.getElementById("prov_input").value;
 
-      //console.log(province);
-      //var newcontent = document.createElement('div');
-      //newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_prov_val.call(this, event);'>"+ dataCache[obj].variety + "</a>";
-      //document.getElementById("variety_dropfield").appendChild(newcontent.firstChild);
+    for(obj in dataCache) {
+      // If province already entered, show only regions in chosen province
+      if(province){
+        if(dataCache[obj].province == province) {
+          regions = dataCache[obj].regions;
+          for(i = 0; i < regions.length; i++) {
+            var newcontent = document.createElement('div');
+            newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_prov_val.call(this, event);'>"+ regions[i] + "</a>";
+            document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+          }
+          break;
+        }
+      }
+      // If province not entered, show all regions
+      else {
+        regions = dataCache[obj].regions;
+        for(i = 0; i < regions.length; i++) {
+          var newcontent = document.createElement('div');
+          newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_prov_val.call(this, event);'>"+ regions[i] + "</a>";
+          document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+        }
+      }
     }
   });
 

@@ -101,7 +101,7 @@
               <div class="col-md-12 col-md-offset-1 col-md-12 col-md-offset-1">
                   <div class="col-md-2">
                     <div class="dropdown">
-                      <input type="search" id="prov_input" placeholder="province" onclick="toggleDropdown(this)" onkeyup="filterProvince()" class="dropfield"/>
+                      <input type="search" id="prov_input" placeholder="province" onclick="toggleDropdown(this); load_dropdowns();" onkeyup="filterProvince()" class="dropfield"/>
                         <div id="province_dropfield" class="dropdown-content">
                         <!--Provinces-->
                       </div>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="col-md-2">
                   <div class="dropdown">
-                    <input type="search" id="reg_input" placeholder="region" onclick="toggleDropdown(this)" onkeyup="filterRegion()" class="dropfield" />
+                    <input type="search" id="reg_input" placeholder="region" onclick="toggleDropdown(this); load_dropdowns();" onkeyup="filterRegion()" class="dropfield" />
                       <div id="region_dropfield" class="dropdown-content">
                         <!--Regions-->
                       </div>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="col-md-2">
                   <div class="dropdown">
-                    <input type="search" id="var_input" placeholder="variety" onclick="toggleDropdown(this)" onkeyup="filterVariety()" class="dropfield" />
+                    <input type="search" id="var_input" placeholder="variety" onclick="toggleDropdown(this); load_dropdowns();" onkeyup="filterVariety()" class="dropfield" />
                       <div id="variety_dropfield" class="dropdown-content">
                         <a href="#">Hallo</a>
                         <a href="#">Heisann</a>
