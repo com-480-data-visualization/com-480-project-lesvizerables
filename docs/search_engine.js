@@ -87,17 +87,31 @@ function set_prov_dropdown(region, variety) {
 // Sets the options of the regions dropdown menu
 function set_reg_dropdown(province, variety) {
   document.getElementById("reg_input").value = "";
+  var regions;
 
-  if(variety){
-    //
+  if(province && variety) {
+    dbRef.child('prov_varieties').once('value').then(function (snapshot) {
+      dataCache = snapshot.val();
+
+      for(obj in dataCache) {
+        if(dataCache[obj].province == province && dataCache[obj].variety == variety) {
+          regions = dataCache[obj].regions;
+
+          for(i = 0; i < regions.length; i++) {
+            var newcontent = document.createElement('div');
+            newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
+            document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+          }
+        }
+      }
+    });
   }
-  else if(province && variety) {
-    //
+  else if(variety){
+    //New df needed 
   }
   else {
     dbRef.child('province_info').once('value').then(function (snapshot) {
       dataCache = snapshot.val();
-      var regions;
 
       for(obj in dataCache) {
         // If province already entered, show only regions in chosen province
