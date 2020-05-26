@@ -37,6 +37,8 @@ var funfacts = {
   FR53: "Pointou-Charantes has the lowest rating of the wines in our dataset and also the lowest average price."
 }
 
+var parameters = getUrlVars();
+
 const WIDTH = window.innerWidth*0.9, HEIGHT = window.innerHeight;
 const OVERLAY_MULTIPLIER = 10;
 const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
@@ -68,27 +70,47 @@ function mouseOutHandler(d, i) {
       return "white";
 });}
 
-function clicked(d, i) {
-  var x, y, k;
-
-  if (d && centered !== d && mapObj[d.properties.ID].dataname) {
+function focusProvince(d, instant=false){
+    var x, y, k;
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
     k = 3;
     centered = d;
-  } else {
+
+    g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+    var duration = 750;
+    if(instant){
+        duration = 0
+    }
+    g.transition()
+      .duration(duration)
+      .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+}
+
+function unFocus(){
+    var x, y, k;
     x = WIDTH / 2;
     y = HEIGHT / 2;
     k = 1;
     centered = null;
-  }
-  g.selectAll("path")
-    .classed("active", centered && function(d) { return d === centered; });
 
-  g.transition()
-    .duration(750)
-    .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+    g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+    g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+}
+
+function clicked(d, i) {
+  if (d && centered !== d && mapObj[d.properties.ID].dataname) {
+    focusProvince(d);
+  } else {
+    unFocus();
+  }
 
   handleClick(centered, d);
 }
@@ -124,7 +146,14 @@ d3.json("france.json").then(function(france) {
         .attr("d", path)
         .attr("class", "province")
         .attr("fill", "white")
-        .style("stroke", "black");
+        .style("stroke", "black")
+        //Handle focused province from url parameters
+        .attr("id", function (d) {
+            if (parameters && d.properties.ID === parameters["province"]){
+                focusProvince(d, true);
+                handleClick(centered, d);
+            }
+        });
 
     dbRef.child('province_names').once('value').then(function (snapshot) {
         g.selectAll("path")
@@ -136,7 +165,7 @@ d3.json("france.json").then(function(france) {
             })
             .on("mouseover", mouseOverHandler)
             .on("mouseout", mouseOutHandler)
-            .on("click", clicked);;
+            .on("click", clicked);
     });
 
 /* // This writes out all the country names on the map
