@@ -23,6 +23,10 @@ function handleClick(centered, d){
   }
 }
 
+function to_varieties_page(event) {
+  window.location.href = "varieties.html?" + "province=" + this.innerText;
+};
+
 function renderStatistics(d){
    for (obj in dataCache) {
      if(dataCache[obj].province == mapObj[d.properties.ID].dataname){
@@ -31,7 +35,8 @@ function renderStatistics(d){
          "<b>Number of varieties: </b>" + p.n_varieties +
          "<br/><b>Number of regions: </b>" + p.n_regions +
          "<br/><b>Average price of wines: </b>" + p.avg_price +
-         " €<br/><b>Average points of wines: </b>" + p.avg_points + "/10";
+         " €<br/><b>Average points of wines: </b>" + p.avg_points + "/10" +
+         "<br/><a href='varieties.html?province="+d.properties.ID+"'>See varieties in this province</a>";
        if(funfacts[d.properties.ID])
          document.getElementById("prov-funfact").innerHTML = "<b>Fun fact: </b>" + funfacts[d.properties.ID];
        else
