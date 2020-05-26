@@ -151,7 +151,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color:  #f1f1f1; 
+  background-color:  #f1f1f1;
   min-width: 150px;
   max-height: 100px;
   overflow-y: scroll;
@@ -190,13 +190,16 @@
 /* FRANCE MAP PAGES */
 
 .link{
+  color: black;
   text-decoration: underline;
+  text-decoration-color: #FACDD4;
 }
 .link:hover {
   cursor: pointer;
   font-weight: bold;
   color: black;
-  align-self: center;
+  font-size: 15px;
+  text-decoration-color: #FACDD4;
 }
 
 /*Clicked province*/
@@ -249,15 +252,4 @@ table, tr, td:first-child {
 table, tr, td:last-child {
   border-bottom:0;
   border-right: 0;
-}
-.variety_name {
-
-}
-.variety_name:hover {
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  color: black;
-  text-decoration: none;
-  align-self: center;
 }

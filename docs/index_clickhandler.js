@@ -28,21 +28,21 @@ function to_varieties_page(event) {
 };
 
 function renderStatistics(d){
-   for (obj in dataCache) {
-     if(dataCache[obj].province == mapObj[d.properties.ID].dataname){
-       var p = dataCache[obj];
-       document.getElementById("prov-info").innerHTML =
-         "<b>Number of varieties: </b>" + p.n_varieties +
-         "<br/><b>Number of regions: </b>" + p.n_regions +
-         "<br/><b>Average price of wines: </b>" + p.avg_price +
-         " €<br/><b>Average points of wines: </b>" + p.avg_points + "/10" +
-         "<br/><a class='link' href='varieties.html?province="+d.properties.ID+"'>See varieties in this province</a>";
-       if(funfacts[d.properties.ID])
-         document.getElementById("prov-funfact").innerHTML = "<b>Fun fact: </b>" + funfacts[d.properties.ID];
-       else
-         document.getElementById("prov-funfact").innerHTML = "";
+  for (obj in dataCache) {
+    if(dataCache[obj].province == mapObj[d.properties.ID].dataname){
+      var p = dataCache[obj];
+      document.getElementById("prov-info").innerHTML =
+        "<b>Number of varieties: </b>" + p.n_varieties +
+        "<br/><b>Number of regions: </b>" + p.n_regions +
+        "<br/><b>Average price of wines: </b>" + p.avg_price +
+        " €<br/><b>Average points of wines: </b>" + p.avg_points + "/10<br/>" +
+        "</br><a class='link' href='varieties.html?province=" + d.properties.ID + "'>See the varieties in this province</a>";
 
-       break;
-     }
-   }
+      if(funfacts[d.properties.ID])
+        document.getElementById("prov-funfact").innerHTML = "<b>Fun fact: </b>" + funfacts[d.properties.ID];
+      else
+        document.getElementById("prov-funfact").innerHTML = "";
+      break;
+    }
+  }
 }

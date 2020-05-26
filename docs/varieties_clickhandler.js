@@ -12,11 +12,13 @@ function showTable(show){
     }
 }
 
-
 function handleClick(centered, d){
   if(centered == d){
     document.getElementById("prov-name").innerHTML = mapObj[d.properties.ID].realname;
-    document.getElementById("prov-teaser").innerHTML = mapObj[d.properties.ID].realname + " produces the following varieties of wine: ";
+    document.getElementById("prov-teaser").innerHTML =
+      "Scroll down to see the varieties that are produced in " + mapObj[d.properties.ID].realname + ".";
+    //document.getElementById("page-instruction").innerHTML = "The varieties are sorted such that the most common variety is at the top.";
+
     showTable(true);
     if(dataCache){
       renderVarieties(d);
@@ -41,7 +43,7 @@ function to_search_page(event) {
 
 
 function renderVarieties(d){
-  var dataname = mapObj[d.properties.ID].dataname
+  var dataname = mapObj[d.properties.ID].dataname;
   var varieties = dataCache.filter(
                     function(item){
                         return item.province == dataname;
@@ -53,6 +55,6 @@ function renderVarieties(d){
     var v = varieties[i];
     document.getElementById("varietyTable").innerHTML +=
       "<tr><td><a class='link' onclick='javascript:to_search_page.call(this, event);'>"
-      + v.variety + "</a></td><td>" + v.regions.filter(Boolean).join("<br/>") + "</th></tr>";
+      + v.variety + "</a></td><td>" + v.regions.filter(Boolean).join(",  ") + "</th></tr>";
   }
 }
