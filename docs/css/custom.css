@@ -266,7 +266,7 @@ table, tr, td:last-child {
 /*barplot*/
 
 .barplotdiv {
-  height: 100%;
+  height: 50%;
   width: 100%;
 }
 
@@ -276,7 +276,7 @@ table, tr, td:last-child {
   width: 100%;
   height: 100%;
   vertical-align: top;
-  overflow: hidden;
+  padding-bottom: 10px;
 }
 .barplot-content {
   display: inline-block;
