@@ -215,7 +215,8 @@
 
 /* Table stuff */
 table {
-  width: 350px;
+  margin-top: 30px;
+  width: 970px;
 }
 th, td {
   text-align: center;
