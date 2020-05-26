@@ -22,7 +22,7 @@ function handleClick(centered, d){
 }
 
 function to_search_page(event) {
-  window.location.href = "searchengine.html?" + "variety=" + this.innerText;
+  window.location.href = encodeURI("searchengine.html?" + "variety=" + this.innerText);
 };
 
 

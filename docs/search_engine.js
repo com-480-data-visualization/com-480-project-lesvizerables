@@ -29,6 +29,7 @@ function load_search_engine(){
       variety += hashes[i];
       if(i < hashes.length) variety += " ";
     }
+    variety = decodeURI(variety);
     // Add variety to search query and show results
     document.getElementById("var_input").value = variety;
     document.getElementById("var_input").style = "color:black;"
