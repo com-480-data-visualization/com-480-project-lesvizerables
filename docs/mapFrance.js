@@ -4,7 +4,7 @@
 // and France Other and clean this into correct province
 // Beaujolais is part of Bourgogne, need to add this to that province in python
 
-var mapObj = {
+const mapObj = {
   FR42: {realname: "Alsace", dataname: "Alsace"},
   FR61: {realname: "Aquitaine", dataname: "Aquitaine"},
   FR72: {realname: "Auvergne", dataname: null},

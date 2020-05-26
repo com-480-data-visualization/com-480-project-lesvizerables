@@ -111,7 +111,7 @@
                   <div class="dropdown">
                     <input type="search" id="reg_input" placeholder="region" onclick="toggleDropdown(this)" onkeyup="filterRegion()" class="dropfield" />
                       <div id="region_dropfield" class="dropdown-content">
-                        <a href="#">Hei</a>
+                        <!--Regions-->
                       </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-md-2">
                   <div class="dropdown">
-                    <input type="search" id="myinput" placeholder="price" onclick="toggleDropdown(this)" class="dropfield" />
+                    <input type="search" id="price_input" placeholder="price" onclick="toggleDropdown(this)" class="dropfield" />
                       <div id="dropfield" class="dropdown-content">
                         <a href="#">Link 1</a>
                       </div>
@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-md-2">
                   <div class="dropdown">
-                    <input type="search" id="myinput" placeholder="points" onclick="toggleDropdown(this)" class="dropfield" />
+                    <input type="search" id="points_input" placeholder="points" onclick="toggleDropdown(this)" class="dropfield" />
                       <div id="dropfield" class="dropdown-content">
                         <a href="#">Link 1</a>
                       </div>
@@ -143,7 +143,7 @@
               </div>
 
               <div class="col-md-4 col-md-offset-4 col-md-4 col-md-offset-4">
-                <button id="searchbtn" class="searchbtn">Search</button>
+                <button id="searchbtn" class="searchbtn" onclick="search_results.call(this, event)">Search</button>
               </div>
               <!-- search bar end -->
             </div>
