@@ -125,6 +125,11 @@ var svg = d3
   .attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT*0.5)
   .classed("svg-content", true);
 
+svg.append("rect")
+  .attr("width", "100%")
+  .attr("height", "100%")
+  .attr("fill", "#a9cce3")
+
 const path = d3
   .geoPath()
   .projection(d3.geoMercator()
