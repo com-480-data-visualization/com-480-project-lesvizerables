@@ -262,3 +262,45 @@ table, tr, td:last-child {
   border-bottom:0;
   border-right: 0;
 }
+
+/*barplot*/
+
+.barplotdiv {
+  height: 100%;
+  width: 100%;
+}
+
+.barplot-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 500px;
+  vertical-align: top;
+  overflow: hidden;
+}
+.barplot-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bar{
+  fill: steelblue;
+}
+
+.bar:hover{
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
