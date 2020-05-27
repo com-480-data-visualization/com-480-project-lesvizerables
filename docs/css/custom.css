@@ -43,7 +43,7 @@
 /* NAVIGATION LINE */
 
 .menu-line-current {
-  stroke: #BA4735;
+  stroke: maroon;
   stroke-width: 10;
 }
 .menu-line-noncurrent {
@@ -51,7 +51,7 @@
   stroke-width:10;
 }
 .menu-line-noncurrent:hover {
-  stroke: #BA4735;
+  stroke: maroon;
 }
 
 /*HAMBURGER-MENU START*/
@@ -258,7 +258,7 @@ table, tr, td:last-child {
   width: 16%;
   padding: 5px;
 }
-/* Dropdown Button */
+/* Dropdown field */
 .dropfield {
   background-color: white;
   color: grey;
@@ -296,8 +296,11 @@ table, tr, td:last-child {
   min-width: 150px;
   max-height: 220px;
   overflow-y: scroll;
+  scrollbar-color: maroon;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+}
+.scrollable-element {
 }
 /* Links inside the dropdown */
 .dropdown-content a {
@@ -309,8 +312,8 @@ table, tr, td:last-child {
 }
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color:  #BA4735;
-  color: white;
+  background-color:  #fce8c9;
+  color: black;
 }
 .show {
   display: block;
