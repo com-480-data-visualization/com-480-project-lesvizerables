@@ -113,6 +113,7 @@ function clicked(d, i) {
   }
 
   handleClick(centered, d);
+  handleSelected(centered, d);
 }
 
 var svg = d3
@@ -157,6 +158,7 @@ d3.json("france.json").then(function(france) {
             if (parameters && d.properties.ID === parameters["province"]){
                 focusProvince(d, true);
                 handleClick(centered, d);
+                handleSelected(centered, d);
             }
         });
 

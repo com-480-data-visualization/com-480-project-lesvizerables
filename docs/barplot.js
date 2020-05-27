@@ -56,7 +56,12 @@ d3.json("barplot.json").then(function(data) {
       .data(data)
     .enter().append("rect")
       .classed("bar", true)
-      .attr("id", function(d) {return x(d.province);})
+      //.attr("id", function(d) {return (d.province);})
+      .attr("id", function(d) {
+        focusBar(d);
+        return (d.province);
+
+      })
       .attr("x", function(d) {return x(d.province);})
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})
@@ -65,6 +70,27 @@ d3.json("barplot.json").then(function(data) {
 
 
 });
+
+
+function handleSelected(centered, d) {
+  if (centered == d) {
+    var selected = mapObj[d.properties.ID].realname;
+
+    var bars = document.getElementsByClassName("bar");
+    var i;
+    for (i = 0; i < bars.length; i++) {
+      var  selectedBar = bars[i];
+      if (selectedBar.id == selected) {
+          //find a way to update svg
+
+          g.selectAll("bar")
+            .classed("active", true);
+        //focusBar(selectedBar, true);
+      }
+    }
+  }
+}
+
 
 
 /*
