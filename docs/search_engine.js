@@ -245,12 +245,10 @@ function search_results(event) {
   var price_range = document.getElementById("price_input").value;
   var price = [];
 
-  //Reset former results
-  document.getElementById('the_search').innerHTML = "";
-  document.getElementById('resulting_statistics').innerHTML = "";
-  document.getElementById("explain_results").innerHTML = "";
-  document.getElementById("search_results_table").innerHTML = "";
-  document.getElementById("search_results_table").innerHTML = "";
+  //Hide former results and show loading icon
+  document.getElementById('loader').style.visibility="visible";
+  document.getElementById('resulting_statistics').style.visibility="hidden";
+  document.getElementById('search_results_div').style.visibility="hidden";
 
   //Turn price range string into array
   if(price_range) {
@@ -323,6 +321,9 @@ function show_province_results(province, price_range, price) {
                 "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
+          document.getElementById('loader').style.visibility="hidden";
+          document.getElementById('resulting_statistics').style.visibility="visible";
+          document.getElementById('search_results_div').style.visibility="visible";
         });
         break;
       }
@@ -363,6 +364,9 @@ function show_region_results(region, price_range, price) {
                 "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
+          document.getElementById('loader').style.visibility="hidden";
+          document.getElementById('resulting_statistics').style.visibility="visible";
+          document.getElementById('search_results_div').style.visibility="visible";
         });
         break;
       }
@@ -402,6 +406,9 @@ function show_variety_results(variety, price_range, price) {
                 "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
+          document.getElementById('loader').style.visibility="hidden";
+          document.getElementById('resulting_statistics').style.visibility="visible";
+          document.getElementById('search_results_div').style.visibility="visible";
         });
         break;
       }
@@ -434,6 +441,9 @@ function show_reg_var_results(region, variety, price_range, price) {
           "</td><td>" + dataCache[obj].year + "</td></tr>";
       }
     }
+    document.getElementById('loader').style.visibility="hidden";
+    document.getElementById('resulting_statistics').style.visibility="visible";
+    document.getElementById('search_results_div').style.visibility="visible";
   });
 }
 
@@ -470,6 +480,9 @@ function show_prov_var_results(province, variety, price_range, price) {
                 "</td><td>" + dataCache[obj].year + "</td></tr>";
             }
           }
+          document.getElementById('loader').style.visibility="hidden";
+          document.getElementById('resulting_statistics').style.visibility="visible";
+          document.getElementById('search_results_div').style.visibility="visible";
         });
       }
     }

@@ -7,9 +7,12 @@
 }
 #mapdiv_column {
   width: 60%;
+  align-items: center;
 }
 #col_next2map {
   width: 40%;
+  padding-left: 20px;
+  align-items: center;
 }
 .div-button {
   float:right;
@@ -296,11 +299,8 @@ table, tr, td:last-child {
   min-width: 150px;
   max-height: 220px;
   overflow-y: scroll;
-  scrollbar-color: maroon;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-}
-.scrollable-element {
 }
 /* Links inside the dropdown */
 .dropdown-content a {
@@ -319,14 +319,14 @@ table, tr, td:last-child {
   display: block;
 }
 .searchbtn {
-  width: 300px;
+  width: 100%;
   height: 50px;
   color: white;
   background-color: maroon;
-  display: block;
+  display: inline-block;
   border:none;
   margin-top: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 .searchbtn:focus {
   outline: none;
@@ -345,4 +345,29 @@ table, tr, td:last-child {
 #search_results_table th {
   width: auto;
   border: 1px solid #000;
+}
+/* loading icon */
+#loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid maroon;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  visibility: hidden;
+  align-self: center;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* search results info */
+#resulting_statistics {
+  visibility: hidden;
+}
+#search_results_div {
+  visibility: hidden;
 }
