@@ -53,6 +53,7 @@ function load_dropdowns() {
 // Sets the options of the province dropdown menu
 function set_prov_dropdown(region, variety) {
   document.getElementById("prov_input").value = "";
+  var provinces;
 
   // If variety already entered, show only provinces with chosen variety
   if(variety) {
@@ -62,18 +63,31 @@ function set_prov_dropdown(region, variety) {
       for (obj in dataCache) {
         if(dataCache[obj].variety == variety) {
           provinces = dataCache[obj].provinces;
+
           for(i = 0; i < provinces.length; i++) {
             var newcontent = document.createElement('div');
             newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ provinces[i] + "</a>";
             document.getElementById("province_dropfield").appendChild(newcontent.firstChild);
           }
+          break;
         }
       }
     });
   }
   // If region already entered, show only province for chosen region
   else if(region) {
-    //New df needed
+    dbRef.child('regions_info').once('value').then(function (snapshot) {
+      dataCache = snapshot.val();
+
+      for (obj in dataCache) {
+        if(dataCache[obj].region == region) {
+          provinces = dataCache[obj].provinces;
+          var newcontent = document.createElement('div');
+          newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ provinces[0] + "</a>";
+          document.getElementById("province_dropfield").appendChild(newcontent.firstChild);
+        }
+      }
+    });
   }
   // If no values entered, show all provinces
   else {
@@ -108,13 +122,29 @@ function set_reg_dropdown(province, variety) {
             newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
             document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
           }
+          break;
         }
       }
     });
   }
   // If variety already entered, show only regions with chosen variety
   else if(variety){
-    //New df needed
+    dbRef.child('varieties_info').once('value').then(function (snapshot) {
+      dataCache = snapshot.val();
+
+      for(obj in dataCache) {
+        if(dataCache[obj].variety == variety){
+          regions = dataCache[obj].regions;
+
+          for(i = 0; i < regions.length; i++) {
+            var newcontent = document.createElement('div');
+            newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
+            document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+          }
+          break;
+        }
+      }
+    });
   }
   else {
     dbRef.child('province_info').once('value').then(function (snapshot) {
@@ -150,6 +180,7 @@ function set_reg_dropdown(province, variety) {
 // Sets the options of the varieties dropdown menu
 function set_var_dropdown(province, region) {
   document.getElementById("var_input").value = "";
+  var varieties;
 
   // If province already entered, show only regions in chosen province
   if(province){
@@ -167,7 +198,20 @@ function set_var_dropdown(province, region) {
   }
   // If region already entered, show only varieties in chosen region
   else if (region) {
-    // Need new df?
+    dbRef.child('regions_info').once('value').then(function (snapshot) {
+      dataCache = snapshot.val();
+
+      for (obj in dataCache) {
+        if(dataCache[obj].region == region) {
+          varieties = dataCache[obj].varieties;
+          for(var i=0; i < varieties.length; i++) {
+            var newcontent = document.createElement('div');
+            newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>" + varieties[i] + "</a>";
+            document.getElementById("variety_dropfield").appendChild(newcontent.firstChild);
+          }
+        }
+      }
+    });
   }
   // If province or region not entered, show all varieties
   else {
