@@ -1,5 +1,5 @@
 
-var margin = {top: 20, right: 20, bottom: 135, left: 30};
+var margin = {top: 20, right: 20, bottom: 135, left: 45};
 
 var width = 360 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
@@ -22,6 +22,15 @@ var svg = d3.select(".barplotdiv")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .classed("barplot-content", true);
 
+function highlightBar(pName) {
+    svg.selectAll(".bar")
+        .classed("active", function(d){
+            if(d.province === pName){
+                return true;
+            }
+            return false;
+        });
+}
 
 d3.json("barplot.json").then(function(data) {
   data.forEach(function(d) {
@@ -42,7 +51,6 @@ d3.json("barplot.json").then(function(data) {
       .attr("dy", ".40em")
       .attr("transform", "rotate(-50)");
 
-
   svg.append("g")
       .classed("axis", true)
       .call(yAxis)
@@ -51,7 +59,14 @@ d3.json("barplot.json").then(function(data) {
       .attr("y", 5)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Number of Varieties")
+
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Varieties");
 
   svg.selectAll("bar")
       .data(data)
@@ -62,15 +77,8 @@ d3.json("barplot.json").then(function(data) {
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})
       .attr("height", function(d) {return height - y(d.n_varieties);});
-});
 
-function highlightBar(centered) {
-    var pName = mapObj[centered.properties.ID].realname;
-    svg.selectAll(".bar")
-        .classed("active", function(d){
-            if(d.province === pName){
-                return true;
-            }
-            return false;
-        });
-}
+  if (parameters && parameters["province"]){
+      highlightBar(mapObj[parameters["province"]].realname);
+  }
+});

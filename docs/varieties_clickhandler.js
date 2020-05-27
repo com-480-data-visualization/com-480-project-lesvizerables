@@ -3,7 +3,6 @@ var dataCache;
 
 function showTable(show){
     var tbl = document.getElementById("varietyTable");
-    console.log(tbl.style.display);
     if(show){
         tbl.style.visibility = "visible"
     }
@@ -20,7 +19,7 @@ function handleClick(centered, d){
     //document.getElementById("page-instruction").innerHTML = "The varieties are sorted such that the most common variety is at the top.";
 
     showTable(true);
-    highlightBar(centered);
+    highlightBar(mapObj[centered.properties.ID].realname);
     if(dataCache){
       renderVarieties(d);
     }
