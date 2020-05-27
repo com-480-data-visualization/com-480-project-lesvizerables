@@ -116,6 +116,21 @@
 
 /* SEARCH ENGINE PAGE*/
 
+#search_inputs_row {
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
+.large_input_field {
+  width: 28%;
+  padding: 5px;
+}
+.small_input_field {
+  width: 16%;
+  padding: 5px;
+}
+
 /* Dropdown Button */
 .dropfield {
   background-color: white;
@@ -125,7 +140,7 @@
   font-size: 16px;
   border: 1px solid black;
   cursor: pointer;
-  width: 150px;
+  width: 100%;
   justify-content: right;
 }
 .dropfield::placeholder {
@@ -137,15 +152,14 @@
   padding: 15px;
   outline-color: maroon;
 }
-
 .dropfield:focus {
   outline-color: maroon;
 }
-
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
@@ -181,7 +195,8 @@
   background-color: maroon;
   display: block;
   border:none;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 .searchbtn:focus {
   outline: none;

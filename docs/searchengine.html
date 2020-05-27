@@ -98,8 +98,8 @@
                 <a href="searchengine.html"><line class="menu-line-current" x1="635px" y1="0", x2="935px", y2="0"/></a>
               </svg>
               <!-- search bar -->
-              <div class="col-md-12 col-md-offset-1 col-md-12 col-md-offset-1">
-                  <div class="col-md-2">
+              <div class="col-md-12 col-md-offset-1" id="search_inputs_row">
+                  <div class="col-md-3 large_input_field">
                     <div class="dropdown">
                       <input type="search" id="prov_input" placeholder="province" onclick="toggleDropdown(this); load_dropdowns.call(this);" onkeyup="filterProvince()" class="dropfield"/>
                         <div id="province_dropfield" class="dropdown-content">
@@ -107,7 +107,7 @@
                       </div>
                   </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3 large_input_field">
                   <div class="dropdown">
                     <input type="search" id="reg_input" placeholder="region" onclick="toggleDropdown(this); load_dropdowns.call(this);" onkeyup="filterRegion()" class="dropfield" />
                       <div id="region_dropfield" class="dropdown-content">
@@ -115,7 +115,7 @@
                       </div>
                   </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4 large_input_field">
                   <div class="dropdown">
                     <input type="search" id="var_input" placeholder="variety" onclick="toggleDropdown(this); load_dropdowns.call(this);" onkeyup="filterVariety()" class="dropfield" />
                       <div id="variety_dropfield" class="dropdown-content">
@@ -123,24 +123,23 @@
                       </div>
                   </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 small_input_field">
                   <div class="dropdown">
                     <input type="search" id="price_input" placeholder="price" onclick="toggleDropdown(this)" class="dropfield" />
-                      <div id="dropfield" class="dropdown-content">
-                        <a href="#">Link 1</a>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="dropdown">
-                    <input type="search" id="points_input" placeholder="points" onclick="toggleDropdown(this)" class="dropfield" />
-                      <div id="dropfield" class="dropdown-content">
-                        <a href="#">Link 1</a>
+                      <div id="price_dropfield" class="dropdown-content">
+                        <!--Prices-->
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">0-10€</a>
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">10-20€</a>
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">20-30€</a>
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">30-40€</a>
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">40-50€</a>
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">50-60€</a>
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">60-70€</a>
+                        <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">> 70€</a>
                       </div>
                   </div>
                 </div>
               </div>
-
               <div class="col-md-4 col-md-offset-4 col-md-4 col-md-offset-4">
                 <button id="searchbtn" class="searchbtn" onclick="search_results.call(this, event)">Search</button>
               </div>

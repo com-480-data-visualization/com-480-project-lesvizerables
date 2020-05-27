@@ -238,9 +238,17 @@ function search_results(event) {
   var province = document.getElementById("prov_input").value;
   var region = document.getElementById("reg_input").value;
   var variety = document.getElementById("var_input").value;
-  var price = document.getElementById("price_input").value;
-  var points = document.getElementById("points_input").value;
+  var price_range = document.getElementById("price_input").value;
+  var price = [];
 
+  // Turn price range string into array
+  // Note that "> 70€" will become ["", "70"]
+  if(price_range) {
+    var hashes = price_range.split(/[>\s-€]+/, 2);
+
+    for(var i = 0; i < hashes.length; i++) {
+      price.push(hashes[i]);
+    }
+  }
   // Check for input and do something with input
-  console.log('button clicked');
 };
