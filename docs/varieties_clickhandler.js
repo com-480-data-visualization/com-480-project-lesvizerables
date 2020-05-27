@@ -20,6 +20,7 @@ function handleClick(centered, d){
     //document.getElementById("page-instruction").innerHTML = "The varieties are sorted such that the most common variety is at the top.";
 
     showTable(true);
+    highlightBar(centered);
     if(dataCache){
       renderVarieties(d);
     }

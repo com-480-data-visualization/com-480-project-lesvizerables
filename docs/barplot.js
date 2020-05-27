@@ -66,77 +66,15 @@ d3.json("barplot.json").then(function(data) {
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})
       .attr("height", function(d) {return height - y(d.n_varieties);});
-
-
-
 });
 
-
-function handleSelected(centered, d) {
-  if (centered == d) {
-    var selected = mapObj[d.properties.ID].realname;
-
-    var bars = document.getElementsByClassName("bar");
-    var i;
-    for (i = 0; i < bars.length; i++) {
-      var  selectedBar = bars[i];
-      if (selectedBar.id == selected) {
-          //find a way to update svg
-
-          g.selectAll("bar")
-            .classed("active", true);
-        //focusBar(selectedBar, true);
-      }
-    }
-  }
+function highlightBar(centered) {
+    var pName = mapObj[centered.properties.ID].realname;
+    svg.selectAll(".bar")
+        .classed("active", function(d){
+            if(d.province === pName){
+                return true;
+            }
+            return false;
+        });
 }
-
-
-
-/*
-
-function focusBar(d, instant=false){
-    var x, y, k;
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 3;
-    centered = d;
-
-    g.selectAll("path")
-      .classed("active", centered && function(d) { return d === centered; });
-
-    var duration = 750;
-    if(instant){
-        duration = 0
-    }
-    g.transition()
-      .duration(duration)
-      .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
-}
-
-function handleClick(centered, d){
-  if(centered == d){
-    document.getElementById("prov-name").innerHTML = mapObj[d.properties.ID].realname;
-    document.getElementById("barplot-id").innerHTML =
-      "Scroll down to see the varieties that are produced in " + mapObj[d.properties.ID].realname + ".";
-    //document.getElementById("page-instruction").innerHTML = "The varieties are sorted such that the most common variety is at the top.";
-
-    showTable(true);
-    if(dataCache){
-      renderVarieties(d);
-    }
-    else{
-      dbRef.child('prov_varieties').once('value').then(function (snapshot) {
-        dataCache = snapshot.val();
-        renderVarieties(d);
-      });
-    }
-  }
-  else{
-    showTable(false);
-    document.getElementById("prov-name").innerHTML = "Provinces";
-    document.getElementById("prov-teaser").innerHTML = "Click on a wine province to see the varieties of wine produced.";
-  }
-}
-*/
