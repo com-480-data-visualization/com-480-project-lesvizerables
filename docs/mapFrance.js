@@ -43,6 +43,12 @@ const WIDTH = window.innerWidth*0.9, HEIGHT = window.innerHeight;
 const OVERLAY_MULTIPLIER = 10;
 const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 
+function getProvinceNode(realname){
+    return g.selectAll("path").filter(function(d) {
+        return mapObj[d.properties.ID].realname === realname;
+    })._groups[0][0].__data__;
+}
+
 // Fill province when hovering and add tooltip text
 function mouseOverHandler(d, i) {
   d3.select(this)

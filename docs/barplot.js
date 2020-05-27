@@ -32,6 +32,10 @@ function highlightBar(pName) {
         });
 }
 
+function barClicked(d, i) {
+    clicked(getProvinceNode(d.province), i);
+}
+
 function removeHighlight() {
     svg.selectAll(".bar")
         .classed("active", function(d) {
@@ -83,7 +87,8 @@ d3.json("barplot.json").then(function(data) {
       .attr("x", function(d) {return x(d.province);})
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})
-      .attr("height", function(d) {return height - y(d.n_varieties);});
+      .attr("height", function(d) {return height - y(d.n_varieties);})
+      .on("click", barClicked);
 
   if (parameters && parameters["province"]){
       highlightBar(mapObj[parameters["province"]].realname);
