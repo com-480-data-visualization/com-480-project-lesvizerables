@@ -128,7 +128,7 @@ var svg = d3
 svg.append("rect")
   .attr("width", "100%")
   .attr("height", "100%")
-  .attr("fill", "#a9cce3")
+  .attr("fill", "white")
 
 const path = d3
   .geoPath()
