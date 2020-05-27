@@ -195,6 +195,7 @@ table, tr, td:last-child {
   height: 50%;
   width: 100%;
 }
+
 .barplot-container {
   display: inline-block;
   position: relative;
@@ -209,12 +210,21 @@ table, tr, td:last-child {
   top: 0;
   left: 0;
 }
+
 .bar{
   fill: #fce8c9;
 }
-.bar:active{
+
+.bar.active{
   fill: maroon;
 }
+.bar.active:hover{
+  fill: maroon;
+}
+.bar.active:not(:hover){
+  fill: maroon;
+}
+
 .axis {
   font: 12px sans-serif;
 }
@@ -225,6 +235,7 @@ table, tr, td:last-child {
   stroke: black;
   shape-rendering: crispEdges;
 }
+
 
 /* SEARCH ENGINE PAGE*/
 
