@@ -34,6 +34,7 @@ function handleClick(centered, d){
     showTable(false);
     document.getElementById("prov-name").innerHTML = "Provinces";
     document.getElementById("prov-teaser").innerHTML = "Click on a wine province to see the varieties of wine produced.";
+    removeHighlight();
   }
 }
 
