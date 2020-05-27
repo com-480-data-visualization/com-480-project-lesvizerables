@@ -8,6 +8,7 @@
 #mapdiv_column {
   width: 60%;
   align-items: center;
+  margin-bottom: 70px;
 }
 #col_next2map {
   width: 40%;
@@ -34,7 +35,7 @@
   left: 0;
 }
 .text-page {
-  padding-top:100px;
+  padding-top:30px;
 }
 .page-content-wrapper {
   min-height: 100%;
@@ -83,6 +84,7 @@
 .ham-menu li a:hover{
   text-decoration: underline;
   text-decoration-color: maroon;
+  font-weight: bold;
 }
 
 .nav-icon {
@@ -334,7 +336,7 @@ table, tr, td:last-child {
   border: 1px solid #000;
 }
 #search_results_table td {
-  font-size: 10px;
+  font-size: 13px;
   width: auto;
   border: 1px solid #000;
 }

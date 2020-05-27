@@ -268,7 +268,7 @@ function search_results(event) {
     show_province_results(province, price_range, price);
   }
   else if((region && !province && !variety && !price_range)
-    || (region && province && !price_range && !variety)
+    || (region && !province && price_range && !variety)
     || (region && province && price_range && !variety)
     || (region && province && !price_range && !variety)){
     show_region_results(region, price_range, price);
@@ -286,6 +286,14 @@ function search_results(event) {
   else if((province && variety && !price_range && !region)
     || (province && variety && price_range && !region)) {
     show_prov_var_results(province, variety, price_range, price);
+  }
+  else {
+    document.getElementById('loader').style.visibility="hidden";
+    if(price_range)
+      document.getElementById('the_search').innerHTML = "You need to select more than just a price range.";
+    else {
+      document.getElementById('the_search').innerHTML = "You need to select one or more inputs for your search query.";
+    }
   }
 };
 
@@ -321,9 +329,18 @@ function show_province_results(province, price_range, price) {
                 "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
-          document.getElementById('loader').style.visibility="hidden";
-          document.getElementById('resulting_statistics').style.visibility="visible";
-          document.getElementById('search_results_div').style.visibility="visible";
+          //Show results if sucessful search
+          if(document.getElementById('search_results_table').children.length > 1) {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+            document.getElementById('search_results_div').style.visibility="visible";
+          }
+          //Show results if unsuccessful search
+          else {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').innerHTML += "</br></br>We were unable to find any wines in this price range.";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+          }
         });
         break;
       }
@@ -364,9 +381,18 @@ function show_region_results(region, price_range, price) {
                 "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
-          document.getElementById('loader').style.visibility="hidden";
-          document.getElementById('resulting_statistics').style.visibility="visible";
-          document.getElementById('search_results_div').style.visibility="visible";
+          //Show results if sucessful search
+          if(document.getElementById('search_results_table').children.length > 1) {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+            document.getElementById('search_results_div').style.visibility="visible";
+          }
+          //Show results if unsuccessful search
+          else {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').innerHTML += "</br></br>We were unable to find any wines in this price range.";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+          }
         });
         break;
       }
@@ -406,9 +432,18 @@ function show_variety_results(variety, price_range, price) {
                 "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
-          document.getElementById('loader').style.visibility="hidden";
-          document.getElementById('resulting_statistics').style.visibility="visible";
-          document.getElementById('search_results_div').style.visibility="visible";
+          //Show results if sucessful search
+          if(document.getElementById('search_results_table').children.length > 1) {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+            document.getElementById('search_results_div').style.visibility="visible";
+          }
+          //Show results if unsuccessful search
+          else {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').innerHTML += "</br></br>We were unable to find any wines in this price range.";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+          }
         });
         break;
       }
@@ -419,6 +454,7 @@ function show_variety_results(variety, price_range, price) {
 //If a user has searched for prov+var+reg(+price) or reg+var(+price), show results
 function show_reg_var_results(region, variety, price_range, price) {
   document.getElementById('the_search').innerHTML = "You searched for the region <b>" + region + "</b> and variety <b>" + variety + "</b>.";
+  document.getElementById('resulting_statistics').innerHTML = "";
 
   //Load table with results
   dbRef.child('raw_data').once('value').then(function (snapshot) {
@@ -441,9 +477,18 @@ function show_reg_var_results(region, variety, price_range, price) {
           "</td><td>" + dataCache[obj].year + "</td></tr>";
       }
     }
-    document.getElementById('loader').style.visibility="hidden";
-    document.getElementById('resulting_statistics').style.visibility="visible";
-    document.getElementById('search_results_div').style.visibility="visible";
+    //Show results if sucessful search
+    if(document.getElementById('search_results_table').children.length > 1) {
+      document.getElementById('loader').style.visibility="hidden";
+      document.getElementById('resulting_statistics').style.visibility="visible";
+      document.getElementById('search_results_div').style.visibility="visible";
+    }
+    //Show results if unsuccessful search
+    else {
+      document.getElementById('loader').style.visibility="hidden";
+      document.getElementById('resulting_statistics').innerHTML = "</br></br>We were unable to find any wines in this price range.";
+      document.getElementById('resulting_statistics').style.visibility="visible";
+    }
   });
 }
 
@@ -457,7 +502,7 @@ function show_prov_var_results(province, variety, price_range, price) {
       if(dataCache[obj].province == province && dataCache[obj].variety == variety) {
         document.getElementById('resulting_statistics').innerHTML = "The variety " + variety + ", in the province " + province +
         ", has an average price of " + dataCache[obj].avg_price + "€, an average point of " + dataCache[obj].avg_points +
-        "/10 and grows in " + dataCache[obj].regions.length + " regions.";
+        "/10 and is produced in " + dataCache[obj].regions.length + " regions.";
 
         //Load table with results
         dbRef.child('raw_data').once('value').then(function (snapshot) {
@@ -480,10 +525,20 @@ function show_prov_var_results(province, variety, price_range, price) {
                 "</td><td>" + dataCache[obj].year + "</td></tr>";
             }
           }
-          document.getElementById('loader').style.visibility="hidden";
-          document.getElementById('resulting_statistics').style.visibility="visible";
-          document.getElementById('search_results_div').style.visibility="visible";
+          //Show results if sucessful search
+          if(document.getElementById('search_results_table').children.length > 1) {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+            document.getElementById('search_results_div').style.visibility="visible";
+          }
+          //Show results if unsuccessful search
+          else {
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('resulting_statistics').innerHTML += "</br></br>We were unable to find any wines in this price range.";
+            document.getElementById('resulting_statistics').style.visibility="visible";
+          }
         });
+        break;
       }
     }
   });
