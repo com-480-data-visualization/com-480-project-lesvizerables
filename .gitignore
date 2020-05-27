@@ -2,4 +2,4 @@
 .vs/
 
 #No reason to store data on git
-.Data/
+Data/
