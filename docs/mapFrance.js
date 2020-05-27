@@ -1,9 +1,4 @@
 
-// Map province ID's to correct region
-// Need to check in original dataframe which regions are included in Southwest France
-// and France Other and clean this into correct province
-// Beaujolais is part of Bourgogne, need to add this to that province in python
-
 const mapObj = {
   FR42: {realname: "Alsace", dataname: "Alsace"},
   FR61: {realname: "Aquitaine", dataname: "Aquitaine"},
@@ -172,21 +167,4 @@ d3.json("france.json").then(function(france) {
             .on("mouseout", mouseOutHandler)
             .on("click", clicked);
     });
-
-/* // This writes out all the country names on the map
-  g.selectAll("text")
-    .data(topojson.feature(france, france.objects.poly).features)
-    .enter()
-    .append("text")
-    .text(function(d) {
-      console.log(d.properties.ID)
-      if(mapObj[d.properties.ID] == null)
-        return d.properties.ID;
-      else
-        return mapObj[d.properties.ID];
-    })
-    .attr("transform", d => `translate(${path.centroid(d)})`)
-    .attr("text-anchor", "middle")
-    .attr("font-size", 10)
-    .attr("class","labels");*/
 });
