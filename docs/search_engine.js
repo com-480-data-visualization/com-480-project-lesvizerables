@@ -23,6 +23,10 @@ function load_search_engine(){
   }
 };
 
+function clear_price_input() {
+  document.getElementById("price_input").value = "";
+};
+
 //Loading the dropdown alternatives
 function load_dropdowns() {
   var province, region, variety;
@@ -55,8 +59,23 @@ function set_prov_dropdown(region, variety) {
   document.getElementById("prov_input").value = "";
   var provinces;
 
+  // If region already entered, show only province for chosen region
+  if(region) {
+    dbRef.child('regions_info').once('value').then(function (snapshot) {
+      dataCache = snapshot.val();
+
+      for (obj in dataCache) {
+        if(dataCache[obj].region == region) {
+          provinces = dataCache[obj].provinces;
+          var newcontent = document.createElement('div');
+          newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ provinces[0] + "</a>";
+          document.getElementById("province_dropfield").appendChild(newcontent.firstChild);
+        }
+      }
+    });
+  }
   // If variety already entered, show only provinces with chosen variety
-  if(variety) {
+  else if(variety) {
     dbRef.child('varieties_info').once('value').then(function (snapshot) {
       dataCache = snapshot.val();
 
@@ -70,21 +89,6 @@ function set_prov_dropdown(region, variety) {
             document.getElementById("province_dropfield").appendChild(newcontent.firstChild);
           }
           break;
-        }
-      }
-    });
-  }
-  // If region already entered, show only province for chosen region
-  else if(region) {
-    dbRef.child('regions_info').once('value').then(function (snapshot) {
-      dataCache = snapshot.val();
-
-      for (obj in dataCache) {
-        if(dataCache[obj].region == region) {
-          provinces = dataCache[obj].provinces;
-          var newcontent = document.createElement('div');
-          newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ provinces[0] + "</a>";
-          document.getElementById("province_dropfield").appendChild(newcontent.firstChild);
         }
       }
     });
@@ -261,18 +265,33 @@ function search_results(event) {
   }
 
   //Get results
-  if((province && !variety && !region && !price_range) || (province && price_range && !variety && !region)) {
+  if((province && !variety && !region && !price_range)
+    || (province && price_range && !variety && !region)) {
     show_province_results(province, price_range, price);
   }
-  if((region && !province && !variety && !price_range) || (region && price_range && !province && !variety)) {
+  else if((region && !province && !variety && !price_range)
+    || (region && province && !price_range && !variety)
+    || (region && province && price_range && !variety)
+    || (region && province && !price_range && !variety)){
     show_region_results(region, price_range, price);
   }
-  if((variety && !province && !region && !price_range) || (variety && price_range && !province && !region)) {
+  else if((variety && !province && !region && !price_range)
+    || (variety && price_range && !province && !region)) {
     show_variety_results(variety, price_range, price);
+  }
+  else if((region && variety && !price_range && !province)
+    || (region && variety && price_range && !province)
+    || (region && province && price_range && variety)
+    || (region && province && !price_range && variety)) {
+      show_reg_var_results(region, variety, price_range, price);
+    }
+  else if((province && variety && !price_range && !region)
+    || (province && variety && price_range && !region)) {
+    show_prov_var_results(province, variety, price_range, price);
   }
 };
 
-//If a user has searched for only a province or province + price, show results
+//If a user has searched for province(+price), show results
 function show_province_results(province, price_range, price) {
   document.getElementById('the_search').innerHTML = "You searched for the province <b>" + province + "</b>.";
 
@@ -291,7 +310,7 @@ function show_province_results(province, price_range, price) {
           document.getElementById("explain_results").innerHTML =
             "The following wines correspond to your search query:";
           document.getElementById("search_results_table").innerHTML =
-            "<tr><th>REGION</th><th>VARIETY</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
+            "<tr><th>PROVINCE</th><th>REGION</th><th>VARIETY</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
 
           for(obj in dataCache) {
             if((!price_range && dataCache[obj].province == province) ||
@@ -299,19 +318,19 @@ function show_province_results(province, price_range, price) {
               (price_range && !price[1] && dataCache[obj].province == province && dataCache[obj].price > price[0])) {
 
               document.getElementById("search_results_table").innerHTML +=
-                "<tr><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety + "</th><td>" + dataCache[obj].price +
-                "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title + "</th><td>" + dataCache[obj].year + "</th></tr>";
+                "<tr><td>"+ dataCache[obj].province + "</td><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
+                "</th><td>" + dataCache[obj].price + "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title +
+                "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
         });
-
         break;
       }
     }
   });
 }
 
-//If a user has searched for only a province or province + price, show results
+//If a user has searched for region(+price) or province+region(+price), show results
 function show_region_results(region, price_range, price) {
   document.getElementById('the_search').innerHTML = "You searched for the region <b>" + region + "</b>.";
 
@@ -331,7 +350,7 @@ function show_region_results(region, price_range, price) {
           document.getElementById("explain_results").innerHTML =
             "The following wines correspond to your search query:";
           document.getElementById("search_results_table").innerHTML =
-            "<tr><th>PROVINCE</th><th>VARIETY</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
+            "<tr><th>PROVINCE</th><th>REGION</th><th>VARIETY</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
 
           for(obj in dataCache) {
             if((!price_range && dataCache[obj].region == region) ||
@@ -339,8 +358,9 @@ function show_region_results(region, price_range, price) {
               (price_range && !price[1] && dataCache[obj].region == region && dataCache[obj].price > price[0])) {
 
               document.getElementById("search_results_table").innerHTML +=
-                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].variety + "</th><td>" + dataCache[obj].price +
-                "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title + "</th><td>" + dataCache[obj].year + "</th></tr>";
+                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].region + "</th><td>" + dataCache[obj].variety +
+                "</th><td>" + dataCache[obj].price + "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title +
+                "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
         });
@@ -350,7 +370,7 @@ function show_region_results(region, price_range, price) {
   });
 }
 
-//If a user has searched for only a variety or variety + price, show results
+//If a user has searched for variety(+price), show results
 function show_variety_results(variety, price_range, price) {
   document.getElementById('the_search').innerHTML = "You searched for the variety <b>" + variety + "</b>.";
 
@@ -369,7 +389,7 @@ function show_variety_results(variety, price_range, price) {
           document.getElementById("explain_results").innerHTML =
             "The following wines correspond to your search query:";
           document.getElementById("search_results_table").innerHTML =
-            "<tr><th>PROVINCE</th><th>REGION</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
+            "<tr><th>PROVINCE</th><th>REGION</th><th>VARIETY</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
 
           for(obj in dataCache) {
             if((!price_range && dataCache[obj].variety == variety) ||
@@ -377,12 +397,80 @@ function show_variety_results(variety, price_range, price) {
               (price_range && !price[1] && dataCache[obj].variety == variety && dataCache[obj].price > price[0])) {
 
               document.getElementById("search_results_table").innerHTML +=
-                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].region + "</th><td>" + dataCache[obj].price +
-                "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title + "</th><td>" + dataCache[obj].year + "</th></tr>";
+                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].region + "</th><td>" + dataCache[obj].variety +
+                "</th><td>" + dataCache[obj].price + "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title +
+                "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }
         });
         break;
+      }
+    }
+  });
+}
+
+//If a user has searched for prov+var+reg(+price) or reg+var(+price), show results
+function show_reg_var_results(region, variety, price_range, price) {
+  document.getElementById('the_search').innerHTML = "You searched for the region <b>" + region + "</b> and variety <b>" + variety + "</b>.";
+
+  //Load table with results
+  dbRef.child('raw_data').once('value').then(function (snapshot) {
+    dataCache = snapshot.val();
+    document.getElementById("explain_results").innerHTML =
+      "The following wines correspond to your search query:";
+    document.getElementById("search_results_table").innerHTML =
+      "<tr><th>PROVINCE</th><th>REGION</th><th>VARIETY</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
+
+    for(obj in dataCache) {
+      if((!price_range && dataCache[obj].region == region && dataCache[obj].variety == variety) ||
+        (price_range && price[1] && dataCache[obj].region == region && dataCache[obj].variety == variety
+          && dataCache[obj].price > price[0] && dataCache[obj].price < price[1]) ||
+        (price_range && !price[1] && dataCache[obj].region == region && dataCache[obj].variety == variety
+          && dataCache[obj].price > price[0])) {
+
+        document.getElementById("search_results_table").innerHTML +=
+          "<tr><td>" + dataCache[obj].province + "</td><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
+          "</td><td>" + dataCache[obj].price + "</td><td>" + dataCache[obj].points + "</td><td>" + dataCache[obj].title +
+          "</td><td>" + dataCache[obj].year + "</td></tr>";
+      }
+    }
+  });
+}
+
+//If a user has searched for prov+var+reg(+price) or reg+var(+price), show results
+function show_prov_var_results(province, variety, price_range, price) {
+  document.getElementById('the_search').innerHTML = "You searched for the province <b>" + province + "</b> and variety <b>" + variety + "</b>.";
+
+  dbRef.child('prov_varieties').once('value').then(function (snapshot) {
+    dataCache = snapshot.val();
+    for(obj in dataCache) {
+      if(dataCache[obj].province == province && dataCache[obj].variety == variety) {
+        document.getElementById('resulting_statistics').innerHTML = "The variety " + variety + ", in the province " + province +
+        ", has an average price of " + dataCache[obj].avg_price + "€, an average point of " + dataCache[obj].avg_points +
+        "/10 and grows in " + dataCache[obj].regions.length + " regions.";
+
+        //Load table with results
+        dbRef.child('raw_data').once('value').then(function (snapshot) {
+          dataCache = snapshot.val();
+          document.getElementById("explain_results").innerHTML =
+            "The following wines correspond to your search query:";
+          document.getElementById("search_results_table").innerHTML =
+            "<tr><th>PROVINCE</th><th>REGION</th><th>VARIETY</th><th>PRICE</th><th>POINTS</th><th>TITLE</th><th>YEAR</th></tr>";
+
+          for(obj in dataCache) {
+            if((!price_range && dataCache[obj].province == province && dataCache[obj].variety == variety) ||
+              (price_range && price[1] && dataCache[obj].province == province && dataCache[obj].variety == variety
+                && dataCache[obj].price > price[0] && dataCache[obj].price < price[1]) ||
+              (price_range && !price[1] && dataCache[obj].province == province && dataCache[obj].variety == variety
+                && dataCache[obj].price > price[0])) {
+
+              document.getElementById("search_results_table").innerHTML +=
+                "<tr><td>" + dataCache[obj].province + "</td><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
+                "</td><td>" + dataCache[obj].price + "</td><td>" + dataCache[obj].points + "</td><td>" + dataCache[obj].title +
+                "</td><td>" + dataCache[obj].year + "</td></tr>";
+            }
+          }
+        });
       }
     }
   });

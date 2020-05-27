@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-md-2 small_input_field">
                   <div class="dropdown">
-                    <input type="search" id="price_input" placeholder="price" onclick="toggleDropdown(this)" class="dropfield" />
+                    <input type="search" id="price_input" placeholder="price" onclick="toggleDropdown(this); clear_price_input();" class="dropfield" />
                       <div id="price_dropfield" class="dropdown-content">
                         <!--Prices-->
                         <a class='dropdown_ele' onclick="javascript:edit_input_val.call(this, event);">0-10€</a>
