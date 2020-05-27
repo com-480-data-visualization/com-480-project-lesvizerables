@@ -289,7 +289,11 @@ function search_results(event) {
   }
   else {
     document.getElementById('loader').style.visibility="hidden";
-    document.getElementById('the_search').innerHTML = "You need to select more than just a price range.";
+    if(price_range)
+      document.getElementById('the_search').innerHTML = "You need to select more than just a price range.";
+    else {
+      document.getElementById('the_search').innerHTML = "You need to select one or more inputs for your search query.";
+    }
   }
 };
 
