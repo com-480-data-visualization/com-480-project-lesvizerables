@@ -38,6 +38,14 @@ function handleClick(centered, d){
   }
 }
 
+function handleHover(centered, d){
+    mediumlightBar(mapObj[d.properties.ID].realname);
+}
+
+function handleOutHover(centered, d){
+    mediumlightBar(mapObj[centered.properties.ID].realname);
+}
+
 function to_search_page(event) {
   window.location.href = encodeURI("searchengine.html?" + "variety=" + this.innerText);
 };

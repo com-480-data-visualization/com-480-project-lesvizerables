@@ -60,8 +60,9 @@ function mouseOverHandler(d, i) {
         return d.properties.ID;
       else
         return mapObj[d.properties.ID].realname;
-    })
-  }
+    });
+  handleHover(centered,d);
+}
 
 function mouseOutHandler(d, i) {
   d3.select(this).attr("fill", function(d) {
@@ -69,7 +70,9 @@ function mouseOutHandler(d, i) {
       return "#fce8c9";
     else
       return "white";
-});}
+  });
+  handleOutHover(centered,d);
+}
 
 function focusProvince(d, instant=false){
     var x, y, k;

@@ -32,6 +32,16 @@ function highlightBar(pName) {
         });
 }
 
+function mediumlightBar(pName) {
+    svg.selectAll(".bar")
+        .classed("active", function(d){
+            if(d.province === mapObj[centered.properties.ID].realname || d.province === pName){
+                return true;
+            }
+            return false;
+        });
+}
+
 function barClicked(d, i) {
     clicked(getProvinceNode(d.province), i);
 }

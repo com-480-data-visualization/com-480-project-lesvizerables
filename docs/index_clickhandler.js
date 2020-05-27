@@ -23,6 +23,14 @@ function handleClick(centered, d){
   }
 }
 
+function handleHover(centered, d){
+
+}
+
+function handleOutHover(centered, d){
+
+}
+
 function to_varieties_page(event) {
   window.location.href = "varieties.html?" + "province=" + this.innerText;
 };
