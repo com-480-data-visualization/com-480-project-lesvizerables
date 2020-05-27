@@ -1,0 +1,86 @@
+[ {
+    "avg_points" : 8.9,
+    "avg_price" : 30.4,
+    "n_regions" : 2,
+    "n_varieties" : 20,
+    "province" : "Alsace",
+    "regions" : [ "Alsace", "Crémant d'Alsace" ]
+  }, {
+    "avg_points" : 8.9,
+    "avg_price" : 37.4,
+    "n_regions" : 63,
+    "n_varieties" : 35,
+    "province" : "Aquitaine",
+    "regions" : [ "Bordeaux Blanc", "Saint-Émilion", "Saint-Estèphe", "Graves", "Pomerol", "Bordeaux Supérieur", "Bordeaux", "Médoc", "Haut-Médoc", "Fronsac", "Margaux", "Blaye Côtes de Bordeaux", "Gaillac", "Montravel", "Monbazillac", "Montagne-Saint-Émilion", "Bergerac", "Bordeaux Rosé", "Jurançon", "Pessac-Léognan", "Saint-Julien", "Pauillac", "Lalande de Pomerol", "Cadillac Côtes de Bordeaux", "Entre-Deux-Mers", "Sauternes", "Castillon Côtes de Bordeaux", "Francs Côtes de Bordeaux", "Côtes de Bourg", "Saint-Georges-Saint-Émilion", "Bergerac Sec", "Listrac-Médoc", "Lussac Saint-Émilion", "Moulis-en-Médoc", "Côtes de Bordeaux", "Buzet", "Irrouléguy", "Bordeaux Clairet", "Côtes du Marmandais", "Barsac", "Pécharmant", "Puisseguin Saint-Émilion", "Bordeaux Côtes de Francs ", "Saint-Croix-du-Mont", "Sainte-Foy Bordeaux", null, "Premieres Côtes de Blaye", "Côtes de Bergerac", "Jurançon Sec", "Côtes de Duras", "Cadillac", "Côtes de Castillon", "Crémant de Bordeaux", "Premieres Côtes de Bordeaux", "Saussignac", "Cérons", "Canon-Fronsac", "Landes", "Vin de Pays de l'Atlantique", "Périgord", "Bergerac Rosé", "Béarn", "Moulis", "Côtes de Montravel" ]
+  }, {
+    "avg_points" : 8.9,
+    "avg_price" : 60.2,
+    "n_regions" : 130,
+    "n_varieties" : 17,
+    "province" : "Bourgogne",
+    "regions" : [ "Beaujolais-Villages", "Beaujolais", "Brouilly", "Chablis", "Mâcon-Milly Lamartine", "Juliénas", "Régnié", "Moulin-à-Vent", "St.-Romain", "Côte de Nuits-Villages", "Montrachet", "Clos de Vougeot", "Chassagne-Montrachet", "Criots-Bâtard-Montrachet", "Meursault", "Chambolle-Musigny", "Mercurey", "Mâcon-Villages", "Côte Chalonnaise", "Chorey-lès-Beaune", "Coteaux Bourguignons", "Saint-Véran", "Beaujolais Rosé", "Marsannay", "Gevrey-Chambertin", "Beaune", "Crémant de Bourgogne", "Pouilly-Fuissé", "Nuits-St.-Georges", "Chénas", "Chiroubles", "Saint-Amour", "Morgon", "Santenay", "Puligny-Montrachet", "Givry", "Fleurie", "Bourgogne Hautes Côtes de Nuits", "Mâcon-Péronne", "Maranges", "Saint-Bris", "Charmes-Chambertin", "Mâcon-Chardonnay", "Ladoix", "Viré-Clessé", "Mâcon-Fuissé", "Vosne-Romanée", "Côtes de Nuits Villages", "Bourgogne Hautes Côtes de Beaune", "Saint-Aubin", "Pernand-Vergelesses", "Auxey-Duresses", "Savigny-lès-Beaune", "Mâcon-Verze", "Volnay", "Corton Les Renardes", "Aloxe-Corton", "Bourgogne", "Petit Chablis", "Bâtard-Montrachet", "Chevalier-Montrachet", "Mâcon-Azé", "Morey-Saint-Denis", "Corton-Charlemagne", "Pommard", "Grands-Echezeaux", "Mazis-Chambertin", "Hautes Côtes de Nuits", "Côte de Brouilly", "Mâcon-Pierreclos", "Pouilly-Vinzelles", "Macon-Bussières", "Mâcon", "Fixin", "Corton", "Latricières-Chambertin", "Montagny", "Echézeaux", "La Grande Rue", "Clos de la Roche", "Vougeot", "Mâcon-Vergisson", "Mâcon-Cruzille", "Beaujolais Blanc", "Mâcon La Roche Vineuse", "Beaujolais-Leynes", "Chambertin Clos de Bèze", "Corton-Rognet", "Corton Vergennes", "Chapelle-Chambertin", "Bourgogne Gamay", "Côte de Beaune", "Bourgogne Epineuil", "Mâcon-Lugny", "Rully", "Bonnes-Mares", "Bourgogne Aligoté", "Saint-Romain", "Mâcon-Uchizy", "Corton Grèves", "Pouilly-Loché", "Musigny", "Chambertin", "Clos Saint-Denis", null, "Mâcon-Mancey", "Irancy", "Mâcon-Loché", "Mâcon-Vinzelles", "Mâcon-Charnay", "Corton-Pougets", "Côte de Beaune-Villages", "Meursault-Blagny", "Mâcon Solutré", "Mâcon-Davayé", "Monthélie", "Clos de Lambrays", "Clos de Tart", "Romanée-St.-Vivant", "Bourgogne Côtes d’Auxerre", "Hautes Cotes de Beaune", "Mâcon-Prissé", "Bienvenues Bâtard-Montrachet", "Burgundy", "Mâcon Chaintré", "Coteaux du Lyonnais", "Corton-Bressandes", "Mazoyeres-Chambertin", "Corton Perrières", "La Romanée", "Bourgogne Vézelay" ]
+  }, {
+    "avg_points" : 9.0,
+    "avg_price" : 79.5,
+    "n_regions" : 1,
+    "n_varieties" : 7,
+    "province" : "Champagne-Ardenne",
+    "regions" : [ "Champagne" ]
+  }, {
+    "avg_points" : 8.7,
+    "avg_price" : 22.0,
+    "n_regions" : 5,
+    "n_varieties" : 11,
+    "province" : "Corse",
+    "regions" : [ "Patrimonio", "Corse", "Ile de Beauté", "Corse Porto Vecchio", "Vin de Pays de l'Ile de Beauté" ]
+  }, {
+    "avg_points" : 8.9,
+    "avg_price" : 34.4,
+    "n_regions" : 4,
+    "n_varieties" : 8,
+    "province" : "Franche-Comté",
+    "regions" : [ "Arbois", "Crémant de Jura", "Côtes du Jura", "Château-Chalon" ]
+  }, {
+    "avg_points" : 8.7,
+    "avg_price" : 20.1,
+    "n_regions" : 50,
+    "n_varieties" : 45,
+    "province" : "Languedoc-Roussillon",
+    "regions" : [ "Languedoc", "Minervois", "Vin de Pays d'Oc", "Coteaux du Languedoc", "Maury Sec", "Côtes du Roussillon Villages Caramany", "Pays d'Oc", "Gard", "Rivesaltes", "Faugères", "Crémant de Limoux", "Picpoul de Pinet", "Minervois La Liviniere", "Corbières", "Coteaux du Languedoc Pic Saint Loup", "La Clape", "Saint-Chinian", "Côtes du Roussillon Villages Tautavel", "Côtes du Roussillon Villages", "Vin de Pays des Côtes Catalanes", "Maury", "Muscat de Rivesaltes", "Côtes du Roussillon Les Aspres", "Côtes du Roussillon", "Fitou", "Sable de Camargue", "Côtes Catalanes", "Vin de Pays Cité de Carcassonne", "Muscat de Saint-Jean de Minervois", "Banyuls", null, "Corbières-Boutenac", "Vin de Pays du Val de Cesse", "Limoux", "Vin de Pays de L'Aude", "Côtes de Thongue", "Blanquette de Limoux", "Aude Hauterive", "Vin de Pays de la Haute Vallée du Gassac", "Cabardes", "Côtes de Thau", "Vin de Pays des Coteaux de Bessilles", "Coteaux du Languedoc-Pézenas", "Vallée du Paradis", "Saint-Chinian-Roquebrun", "Vin de Pays de L'Herault", "Vin de Pays de Montferrand", "Collioure", "Saint Guilhem le Désert", "Rivesaltes Rosé", "Terrasses du Larzac" ]
+  }, {
+    "avg_points" : 8.9,
+    "avg_price" : 25.7,
+    "n_regions" : 17,
+    "n_varieties" : 43,
+    "province" : "Midi-Pyrénées",
+    "regions" : [ "Cahors", "Madiran", "Vin de Pays des Côtes de Gascogne", "Côtes de Gascogne", "Côtes du Lot", "Gers", "Fronton", "Côtes du Tarn", "Pacherenc du Vic Bilh", "Vin de Pays du Lot", "Marcillac", "Saint-Mont", "Côtes du Frontonnais", "Brulhois", "Lot", "Gaillac Doux", "Côtes de Saint-Mont" ]
+  }, {
+    "avg_points" : 8.8,
+    "avg_price" : 26.0,
+    "n_regions" : 48,
+    "n_varieties" : 28,
+    "province" : "Pays-de-la-Loire",
+    "regions" : [ "Muscadet Sèvre et Maine", "Sancerre", "Quincy", "Pouilly-Fumé", "Saumur-Champigny", "Menetou-Salon", "Saumur", "Touraine", "Reuilly", "Rosé de Loire", "Muscadet Côtes de Grandlieu", "Anjou Villages Brissac", "Bonnezeaux", "Coteaux du Layon", "Savennières", "Chinon", "Vouvray", "Crémant de Loire", "Saint-Nicolas-de-Bourgueil", "Quarts de Chaume", "Cheverny", "Anjou", "Coteaux du Giennois", "Vin de Pays du Val de Loire", "Val de Loire", null, "Bourgueil", "Coteaux du Layon Chaume", "Muscadet", "Anjou Villages", "Coteaux d'Ancenis", "Cabernet de Saumur", "Rosé d'Anjou", "Coteaux du Vendômois", "Montlouis-sur-Loire", "Touraine Amboise", "Savennières-Roche-Aux-Moines", "Coteaux du Layon Saint Aubin", "Pouilly-sur-Loire", "Cour-Cheverny", "Muscadet Sèvre et Maine Clisson", "Vin de Pays du Jardin de la France", "Muscadet Coteaux de la Loire", "Pays de Loire", "Châteaumeillant", "Côte Roannaise", "Cabernet d'Anjou", "Coteaux du Layon Beaulieu", "Apremont" ]
+  }, {
+    "avg_points" : 8.4,
+    "avg_price" : 12.0,
+    "n_regions" : 1,
+    "n_varieties" : 2,
+    "province" : "Poitou-Charentes",
+    "regions" : [ "Charentais" ]
+  }, {
+    "avg_points" : 8.8,
+    "avg_price" : 22.6,
+    "n_regions" : 16,
+    "n_varieties" : 22,
+    "province" : "Provence-Alpes-Côtes d'Azur",
+    "regions" : [ "Coteaux Varois en Provence", "Côtes de Provence", "Coteaux d'Aix-en-Provence", "Côtes de Provence Sainte-Victoire", "Les Baux de Provence", "Bandol", "Vin de Pays Var", "Coteaux Varois", "Palette", "Var", "Côtes de Provence La Londe", "Vin de Pays des Maures", "Coteaux de Verdon", "Vin de Pays des Portes de Méditerranée", "Vin de Pays des Alpilles", null, "Alpilles" ]
+  }, {
+    "avg_points" : 8.9,
+    "avg_price" : 37.6,
+    "n_regions" : 38,
+    "n_varieties" : 27,
+    "province" : "Rhône-Alpes",
+    "regions" : [ "Côtes du Rhône", "Vacqueyras", "Côtes du Rhône Villages", "Costières de Nîmes", null, "Châteauneuf-du-Pape", "Hermitage", "Vin de Savoie", "Tavel", "Condrieu", "Vin de Pays des Cévennes", "Luberon", "Cornas", "Ventoux", "Roussette de Savoie", "Saint-Joseph", "Savoie", "Gigondas", "Crozes-Hermitage", "Collines Rhôdaniennes", "Clairette de Die Méthode Dioise Ancestrale", "Chignin-Bergeron", "Côtes-du-Ventoux", "Rasteau", "Cévennes", "Muscat de Beaumes de Venise", "Lirac", "Vin de Pays du Gard", "Côte Rôtie", "Ardèche", "Clairette de Bellegarde", "Côtes du Luberon", "Vin de Pays de Vaucluse", "Chignin", "Saint-Péray", "Côtes de Forez", "Vin Doux Naturel Rasteau", "Laudun", "Clairette de Die" ]
+  }
+]
