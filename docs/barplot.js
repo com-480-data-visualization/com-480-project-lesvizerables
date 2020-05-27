@@ -56,12 +56,7 @@ d3.json("barplot.json").then(function(data) {
       .data(data)
     .enter().append("rect")
       .classed("bar", true)
-      //.attr("id", function(d) {return (d.province);})
-      .attr("id", function(d) {
-        //focusBar(d);
-        return (d.province);
-
-      })
+      .attr("id", function(d) {return (d.province);})
       .attr("x", function(d) {return x(d.province);})
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})

@@ -24,7 +24,7 @@ const mapObj = {
   FR30: {realname: "Nord-Pas-de-Calais", dataname: null},
   FR51: {realname: "Pays-de-la-Loire", dataname: "Pays-de-la-Loire"},
   FR22: {realname: "Picardie", dataname: null},
-  FR53: {realname: "Poitou-Charantes", dataname: "Poitou-Charentes"},
+  FR53: {realname: "Poitou-Charentes", dataname: "Poitou-Charentes"},
   FR82: {realname: "Provence-Alpes-Côtes d'Azur", dataname: "Provence-Alpes-Côtes d'Azur"},
   FR71: {realname: "Rhône-Alpes", dataname: "Rhône-Alpes"}
 };
