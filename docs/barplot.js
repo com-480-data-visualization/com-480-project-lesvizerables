@@ -58,7 +58,7 @@ d3.json("barplot.json").then(function(data) {
       .classed("bar", true)
       //.attr("id", function(d) {return (d.province);})
       .attr("id", function(d) {
-        focusBar(d);
+        //focusBar(d);
         return (d.province);
 
       })
