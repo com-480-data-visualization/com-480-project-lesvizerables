@@ -52,7 +52,7 @@ d3.json("barplot.json").then(function(data) {
       .classed("axis", true)
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(5))
-    .selectAll("text")
+      .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
       .attr("dy", ".40em")
@@ -61,7 +61,7 @@ d3.json("barplot.json").then(function(data) {
   svg.append("g")
       .classed("axis", true)
       .call(yAxis)
-    .append("text")
+      .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 5)
       .attr("dy", ".71em")
@@ -73,7 +73,8 @@ d3.json("barplot.json").then(function(data) {
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Varieties");
+      .style("font-size", "13px")
+      .text("Number of varieties");
 
   svg.selectAll("bar")
       .data(data)
