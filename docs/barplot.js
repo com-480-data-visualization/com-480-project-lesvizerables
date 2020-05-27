@@ -32,6 +32,13 @@ function highlightBar(pName) {
         });
 }
 
+function removeHighlight() {
+    svg.selectAll(".bar")
+        .classed("active", function(d) {
+          return false;
+        })
+}
+
 d3.json("barplot.json").then(function(data) {
   data.forEach(function(d) {
     d.province = d.province;
