@@ -43,7 +43,7 @@
 /* NAVIGATION LINE */
 
 .menu-line-current {
-  stroke: maroon;
+  stroke: #BA4735;
   stroke-width: 10;
 }
 .menu-line-noncurrent {
