@@ -46,7 +46,7 @@
 /* NAVIGATION LINE */
 
 .menu-line-current {
-  stroke: #BA4735;
+  stroke: #8c1b0a;
   stroke-width: 10;
 }
 .menu-line-noncurrent {
@@ -159,9 +159,6 @@
   margin-top: 30px;
   width: 100%;
 }
-#prov-name{
-
-}
 
 /* VARIETIES PAGE */
 
@@ -243,7 +240,6 @@ table, tr, td:last-child {
   stroke: black;
   shape-rendering: crispEdges;
 }
-
 
 /* SEARCH ENGINE PAGE*/
 
@@ -363,7 +359,6 @@ table, tr, td:last-child {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 /* search results info */
 #resulting_statistics {
   visibility: hidden;
