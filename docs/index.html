@@ -23,15 +23,14 @@
     <script src="lib/d3.min.js"></script>
     <script src="https://unpkg.com/topojson-client@3"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-
-
     <!--FIREBASE-->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
-
     <!-- functions for toggling hamburger meu and search engine-->
     <script src="functions.js"></script>
+    <!-- get province id from url -->
+    <script src="url_vars.js"></script>
 
     <script>
         // Your web app's Firebase configuration
@@ -61,17 +60,15 @@
         }
     </script>
 
-    <script src="url_vars.js"></script>
-
     <style>
-
         body {
             font-family: 'Montserrat';
         }
     </style>
+
 </head>
   <body data-spy="scroll" data-target="#navigation" data-offset="120">
-    <!-- ??-->
+    <!--index-->
     <div class="page-content-wrapper">
       <section id="maptest" class="text-page">
         <div class="container">
@@ -92,12 +89,15 @@
               </nav>
               <!-- hamburger menu end-->
               <h2 class="heading">Wines of France</h2>
+                <!-- navitation line start-->
                 <svg viewbox="0 0 970 10">
                   <a href="index.html"><line class="menu-line-current" x1="35px" y1="0", x2="335px", y2="0"/></a>
                   <a href="varieties.html"><line class="menu-line-noncurrent" x1="335px" y1="0", x2="635px", y2="0"/></a>
                   <a href="searchengine.html"><line class="menu-line-noncurrent" x1="635px" y1="0", x2="935px", y2="0"/></a>
                 </svg>
+                <!-- navitation line end-->
             </div>
+            <!-- map start -->
             <div class="col-md-8" id="mapdiv_column">
               <div id="container" class="svg-container">
                 <div class = "mapdiv">
@@ -106,6 +106,8 @@
                 </div>
               </div>
             </div>
+            <!-- map end -->
+            <!-- information column start-->
             <div class="col-md-4" id="col_next2map">
               <div id="prov-info-div">
                 <h4 class="heading" id="prov-name">Provinces</h4>
@@ -117,11 +119,12 @@
                   <p id="prov-funfact"></p>
               </div>
             </div>
+            <!-- information column start-->
           </div>
         </div>
       </<section>
     </div>
-    <!-- ??-->
+    <!-- index-->
     <!-- template-->
     <footer style="background-color: #111;" class="section-inverse">
       <div class="container">

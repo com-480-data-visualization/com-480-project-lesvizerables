@@ -1,6 +1,9 @@
+// handling click actions of index page
+
 var dataCache;
 
 function handleClick(centered, d){
+  // get chosen province, display name and info of that province
   if(centered == d){
     document.getElementById("prov-name").innerHTML = mapObj[d.properties.ID].realname;
     document.getElementById("prov-teaser").innerHTML = mapObj[d.properties.ID].realname + " has the following statistics: ";
@@ -15,6 +18,8 @@ function handleClick(centered, d){
       });
     }
   }
+
+  // reset back to neutral display if no province selected
   else{
     document.getElementById("prov-name").innerHTML = "Provinces";
     document.getElementById("prov-teaser").innerHTML = "Click on a wine province to get information about it.";
@@ -31,10 +36,12 @@ function handleOutHover(centered, d){
 
 }
 
+// function that sends user to varieties page if link is clicked
 function to_varieties_page(event) {
   window.location.href = "varieties.html?" + "province=" + this.innerText;
 };
 
+// get the information about a province to be displayed and style it
 function renderStatistics(d){
   for (obj in dataCache) {
     if(dataCache[obj].province == mapObj[d.properties.ID].dataname){

@@ -1,16 +1,20 @@
+// functions for handling dropdown objects
 
+// open and hide dropdown from hamburger menu
 function toggleHammenu() {
   let menu = document.querySelector(".ham-menu");
   menu.classList.toggle("toggleMenu");
 
+  // activate animation of icon in hamburger menu
   let icon = document.querySelector(".nav-icon");
   icon.classList.toggle("toggleIcon");
 }
 
+// open and hide dropdown for input dropfields and info dropfield (search engine page)
 function toggleDropdown(a) {
-  console.log("hei");
   a.parentNode.getElementsByClassName("dropdown-content")[0].classList.toggle("show");
 
+  // close dropdowns if other dropdown element selected
   var dropdowns = document.getElementsByClassName("dropdown-content");
   var i;
   for (i = 0; i < dropdowns.length; i++) {
@@ -21,6 +25,7 @@ function toggleDropdown(a) {
   }
 }
 
+// close dropdowns if screen clicked outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropfield')) {
 
@@ -35,6 +40,7 @@ window.onclick = function(event) {
   }
 }
 
+// filter province input field to match what is typed
 function filterProvince() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("prov_input");
@@ -51,6 +57,7 @@ function filterProvince() {
   }
 }
 
+// filter region input field to match what is typed
 function filterRegion() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("reg_input");
@@ -67,6 +74,7 @@ function filterRegion() {
   }
 }
 
+// filter variety input field to match what is typed
 function filterVariety() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("var_input");
