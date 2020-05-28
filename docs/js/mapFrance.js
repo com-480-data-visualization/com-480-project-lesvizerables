@@ -127,7 +127,6 @@ function clicked(d, i) {
   } else {
     unFocus();
   }
-
   handleClick(centered, d);
 }
 
