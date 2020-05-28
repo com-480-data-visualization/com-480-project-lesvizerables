@@ -174,7 +174,7 @@
 }
 table {
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   width: 100%;
 }
 th, td {
@@ -228,11 +228,15 @@ table, tr, td:last-child {
   fill: #FACDD4;
 }
 .bar.active:hover{
-  fill: #FACDD4;
+    fill: #FACDD4;
+}
+.bar.inactive{
+    fill: #8c1b0a;
 }
 .bar.active:not(:hover){
   fill: #FACDD4;
 }
+
 .axis {
   font: 12px sans-serif;
 }
@@ -367,6 +371,7 @@ table, tr, td:last-child {
 }
 #search_results_div {
   visibility: hidden;
+  margin-bottom: 50px;
 }
 
 /* dropdown search engine table*/
