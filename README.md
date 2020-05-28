@@ -52,8 +52,6 @@ This project is optimised for use in Google Chrome and with a screen size of 13"
 
 The website requires no setup and can be found [here](https://com-480-data-visualization.github.io/com-480-project-lesvizerables/).
 
-The data used for the project is hosted on Firebase, a copy of the database can be found [here](https://github.com/com-480-data-visualization/com-480-project-lesvizerables/blob/master/Data/firebase_data.json).
-
 ### Intended usage
 This visualization project is created to make it easier for amateur wine lovers to explore different wines in France. As there are many people out there who are curious about wine, but who do not have any particular knowledge about it, we wanted to make an interactive and fun way of exploring the different wines in France. By making it easier to explore a wine’s origin, price and quality, a user can get inspiration for the next time they choose to purchase wine.
 
@@ -63,4 +61,7 @@ By creating the visualization as a story, in which the user will go through diff
 The process book can be found [here](Milestone_3.pdf). 
 
 ### Screencast
-The video can be found [here]().
+The video can be found [here](https://www.youtube.com/watch?v=LGIjm6sBFzU&feature=youtu.be).
+
+### The data
+The data used for the project is hosted on Firebase, a copy of the database can be found [here](https://github.com/com-480-data-visualization/com-480-project-lesvizerables/blob/master/Data/firebase_data.json).
