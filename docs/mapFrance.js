@@ -140,7 +140,7 @@ var svg = d3
   .attr("height", HEIGHT)
   .attr("preserveAspectRatio", "xMinYMin meet")
   // viewbox to position and scale map correctly
-  .attr("viewBox", "0 0 " + WIDTH * 1.5 + " " + HEIGHT * 0.5)
+  .attr("viewBox", "50 -50 " + WIDTH * 1.5 + " " + HEIGHT * 0.5)
   .classed("svg-content", true);
 
 svg.append("rect")
