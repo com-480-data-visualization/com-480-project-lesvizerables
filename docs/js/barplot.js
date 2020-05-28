@@ -79,7 +79,7 @@ function removeHighlight() {
 }
 
 // creation of barplot with data from json file
-d3.json("barplot.json").then(function(data) {
+d3.json("json/barplot.json").then(function(data) {
   // get data values for x and y axis
   data.forEach(function(d) {
     d.province = d.province;

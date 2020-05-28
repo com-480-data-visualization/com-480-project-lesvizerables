@@ -159,7 +159,7 @@ var g = svg.append("g");
 const dbRef = firebase.database().ref();
 
 // creation of map from JSON
-d3.json("france.json").then(function(france) {
+d3.json("json/france.json").then(function(france) {
     g.selectAll("path")
         .data(topojson.feature(france, france.objects.poly).features)
         .enter()
