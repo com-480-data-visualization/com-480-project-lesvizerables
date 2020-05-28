@@ -228,11 +228,16 @@ table, tr, td:last-child {
   fill: #FACDD4;
 }
 .bar.active:hover{
-    fill: #FACDD4;
+  fill: #FACDD4;
 }
 .bar.inactive{
-    fill: #8c1b0a;
+  fill: #8c1b0a;
 }
+
+.bar.inactive:not(:hover) {
+  fill: #fce8c9;
+}
+
 .bar.active:not(:hover){
   fill: #FACDD4;
 }
