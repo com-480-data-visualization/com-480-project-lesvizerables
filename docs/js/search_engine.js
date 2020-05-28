@@ -17,9 +17,6 @@ function load_search_engine(){
     // add variety to search query and show results
     document.getElementById("var_input").value = variety;
     document.getElementById("var_input").style = "color:black;"
-
-    // show results
-    document.getElementById("searchbtn").click();
   }
 };
 
