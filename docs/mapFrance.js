@@ -131,7 +131,8 @@ var svg = d3
   .attr("width", WIDTH)
   .attr("height", HEIGHT)
   .attr("preserveAspectRatio", "xMinYMin meet")
-  .attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT*0.5)
+  .attr("viewBox", "300 50 " + WIDTH * 1.5 + " " + HEIGHT * 0.5)
+  //.attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT*0.5)
   .classed("svg-content", true);
 
 svg.append("rect")

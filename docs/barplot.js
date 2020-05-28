@@ -59,6 +59,11 @@ function removeHighlight() {
         .classed("active", function(d) {
           return false;
         })
+
+    svg.selectAll(".bar")
+        .classed("inactive", function(d) {
+          return false;
+        })
 }
 
 d3.json("barplot.json").then(function(data) {
