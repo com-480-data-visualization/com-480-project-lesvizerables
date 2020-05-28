@@ -18,6 +18,7 @@ function load_search_engine(){
     document.getElementById("var_input").value = variety;
     document.getElementById("var_input").style = "color:black;"
   }
+  console.log('hej');
 };
 
 function clear_price_input() {
