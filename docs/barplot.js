@@ -46,6 +46,14 @@ function barClicked(d, i) {
     clicked(getProvinceNode(d.province), i);
 }
 
+function barHoverOver(d, i) {
+    mouseOverHandler(getProvinceNode(d.province), i);
+}
+
+function barHoverOut(d, i) {
+    mouseOutHandler(getProvinceNode(d.province), i);
+}
+
 function removeHighlight() {
     svg.selectAll(".bar")
         .classed("active", function(d) {
@@ -99,6 +107,8 @@ d3.json("barplot.json").then(function(data) {
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})
       .attr("height", function(d) {return height - y(d.n_varieties);})
+      .on("mouseover", barHoverOver)
+      .on("mouseout", barHoverOut)
       .on("click", barClicked);
 
   if (parameters && parameters["province"]){
