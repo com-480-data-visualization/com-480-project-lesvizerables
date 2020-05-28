@@ -56,3 +56,9 @@ The website requires no setup and can be found [here](https://com-480-data-visua
 This visualization project is created to make it easier for amateur wine lovers to explore different wines in France. As there are many people out there who are curious about wine, but who do not have any particular knowledge about it, we wanted to make an interactive and fun way of exploring the different wines in France. By making it easier to explore a wine’s origin, price and quality, a user can get inspiration for the next time they choose to purchase wine.
 
 By creating the visualization as a story, in which the user will go through different chapters, our aim is that the target group will find it inspiring to explore the different wines that are made across France.
+
+### Process Book
+The process book can be found [here](Milestone_3.pdf). 
+
+### Screencast
+The video can be found [here]().
