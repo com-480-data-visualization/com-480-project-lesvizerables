@@ -49,6 +49,7 @@ The website with the skeleton of the visualisation and widgets can be found [her
 
 ### Technical setup
 This project is optimised for use in Google Chrome and with a screen size of 13". 
+
 The website requires no setup and can be found [here](https://com-480-data-visualization.github.io/com-480-project-lesvizerables/).
 
 ### Intended usage
