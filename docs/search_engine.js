@@ -259,7 +259,6 @@ function search_results(event) {
     }
     //If price_range was '< 70€', remove empty first slot
     if(price[0] == "") price.shift();
-    console.log(price);
   }
 
   //Get results
@@ -326,7 +325,8 @@ function show_province_results(province, price_range, price) {
               document.getElementById("search_results_table").innerHTML +=
                 "<tr><td>"+ dataCache[obj].province + "</td><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
                 "</th><td>" + dataCache[obj].price + "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title +
-                        "<div class=\"info-dropdown\"> <button class=\"info-btn\" onclick=\"javascript:toggleDropdown(this)\">info</button><div class=\"dropdown-content\"><a>heihei</a></div></div>" +
+                "<div class='dropdown'><input type='button' value='i' class='dropfield' id='info-button' onclick='javascript:toggleDropdown(this)'/>" +
+                "<div id='info-dropdown' class='dropdown-content'><a>" + dataCache[obj].description + "</a></div></div>" +
                 "</th><td>" + dataCache[obj].year + "</th></tr>";
             }
           }

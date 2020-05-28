@@ -8,7 +8,6 @@ function toggleHammenu() {
 }
 
 function toggleDropdown(a) {
-  console.log("hei");
   a.parentNode.getElementsByClassName("dropdown-content")[0].classList.toggle("show");
 
   var dropdowns = document.getElementsByClassName("dropdown-content");
