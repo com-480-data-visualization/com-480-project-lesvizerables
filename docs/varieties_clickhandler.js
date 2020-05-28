@@ -1,6 +1,8 @@
-var dataCache;
-//const dbRef = firebase.database().ref();
+// handling of actions done on the varieties page
 
+var dataCache;
+
+// show table displaying varieties and regions
 function showTable(show){
     var tbl = document.getElementById("varietyTable");
     if(show){
@@ -11,6 +13,7 @@ function showTable(show){
     }
 }
 
+// handling changing information, showing table and highlighting barplot when province is selected
 function handleClick(centered, d){
   if(centered == d){
     document.getElementById("prov-name").innerHTML = mapObj[d.properties.ID].realname;
@@ -30,6 +33,7 @@ function handleClick(centered, d){
       });
     }
   }
+  // reset to neutral if province unselected
   else{
     showTable(false);
     document.getElementById("prov-name").innerHTML = "Provinces";
@@ -38,10 +42,12 @@ function handleClick(centered, d){
   }
 }
 
+// highlight bar in barplot if province on map hovered
 function handleHover(centered, d){
     mediumlightBar(mapObj[d.properties.ID].realname);
 }
 
+// remove highlight of bar in barplot if province on map not hovered
 function handleOutHover(centered, d){
     if(centered){
         mediumlightBar(mapObj[centered.properties.ID].realname);
@@ -51,10 +57,12 @@ function handleOutHover(centered, d){
     }
 }
 
+// action that carries variety picked as input in search engine
 function to_search_page(event) {
   window.location.href = encodeURI("searchengine.html?" + "variety=" + this.innerText);
 };
 
+// get the belonging varieties and regions data for a selected province
 function renderVarieties(d){
   var dataname = mapObj[d.properties.ID].dataname;
   var varieties = dataCache.filter(

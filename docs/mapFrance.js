@@ -1,3 +1,4 @@
+// creation and animations of the map of France
 
 const mapObj = {
   FR42: {realname: "Alsace", dataname: "Alsace"},
@@ -34,10 +35,12 @@ var funfacts = {
 
 var parameters = getUrlVars();
 
+// set height and width of map
 const WIDTH = window.innerWidth*0.9, HEIGHT = window.innerHeight;
 const OVERLAY_MULTIPLIER = 10;
 const OVERLAY_OFFSET = OVERLAY_MULTIPLIER / 2 - 0.5;
 
+// get the selected province node
 function getProvinceNode(realname){
     return g.selectAll("path").filter(function(d) {
         return mapObj[d.properties.ID].realname === realname;
@@ -69,6 +72,7 @@ function mouseOverHandler(d, i) {
   handleHover(centered,d);
 }
 
+// reset map to initial state if mouse not on it
 function mouseOutHandler(d, i) {
   g.selectAll("path").attr("fill", function(d) {
     if (mapObj[d.properties.ID].dataname)
@@ -79,6 +83,7 @@ function mouseOutHandler(d, i) {
   handleOutHover(centered,d);
 }
 
+// center province in window and add correct color when focused
 function focusProvince(d, instant=false){
     var x, y, k;
     var centroid = path.centroid(d);
@@ -99,6 +104,7 @@ function focusProvince(d, instant=false){
       .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
 }
 
+// remove focus on province if unselected
 function unFocus(){
     var x, y, k;
     x = WIDTH / 2;
@@ -114,6 +120,7 @@ function unFocus(){
       .attr("transform", "translate(" + WIDTH / 2 + "," + HEIGHT / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
 }
 
+// handling when province is clicked on
 function clicked(d, i) {
   if (d && centered !== d && mapObj[d.properties.ID].dataname) {
     focusProvince(d);
@@ -124,6 +131,7 @@ function clicked(d, i) {
   handleClick(centered, d);
 }
 
+// creation of svg
 var svg = d3
   .select(".mapdiv")
   .attr("id", "svg")
@@ -131,8 +139,8 @@ var svg = d3
   .attr("width", WIDTH)
   .attr("height", HEIGHT)
   .attr("preserveAspectRatio", "xMinYMin meet")
+  // viewbox to position and scale map correctly
   .attr("viewBox", "300 50 " + WIDTH * 1.5 + " " + HEIGHT * 0.5)
-  //.attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT*0.5)
   .classed("svg-content", true);
 
 svg.append("rect")
@@ -148,12 +156,10 @@ const path = d3
     .translate([WIDTH / 2, HEIGHT / 2]));
 
 var g = svg.append("g");
-
 const dbRef = firebase.database().ref();
 
+// creation of map from JSON
 d3.json("france.json").then(function(france) {
-  //console.log(topojson.feature(france, france.objects.poly).features);
-
     g.selectAll("path")
         .data(topojson.feature(france, france.objects.poly).features)
         .enter()
@@ -170,6 +176,7 @@ d3.json("france.json").then(function(france) {
             }
         });
 
+    // fill interactive provinces with color, and non-interactive with white
     dbRef.child('province_names').once('value').then(function (snapshot) {
         g.selectAll("path")
             .attr("fill", function (d) {
