@@ -34,7 +34,7 @@ function highlightBar(pName) {
 
 function mediumlightBar(pName) {
     svg.selectAll(".bar")
-        .classed("active", function(d){
+        .classed("inactive", function(d){
             if((centered && d.province === mapObj[centered.properties.ID].realname) || d.province === pName){
                 return true;
             }
