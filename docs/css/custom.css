@@ -174,7 +174,7 @@
 }
 table {
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   width: 100%;
 }
 th, td {
@@ -367,4 +367,5 @@ table, tr, td:last-child {
 }
 #search_results_div {
   visibility: hidden;
+  margin-bottom: 50px;
 }
