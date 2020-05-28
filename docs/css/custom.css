@@ -227,9 +227,14 @@ table, tr, td:last-child {
 .bar.active:hover{
   fill: #FACDD4;
 }
+.bar.inactive{
+  fill: #8c1b0a;
+}
+
 .bar.active:not(:hover){
   fill: #FACDD4;
 }
+
 .axis {
   font: 12px sans-serif;
 }

@@ -34,8 +34,8 @@ function highlightBar(pName) {
 
 function mediumlightBar(pName) {
     svg.selectAll(".bar")
-        .classed("active", function(d){
-            if(d.province === mapObj[centered.properties.ID].realname || d.province === pName){
+        .classed("inactive", function(d){
+            if((centered && d.province === mapObj[centered.properties.ID].realname) || d.province === pName){
                 return true;
             }
             return false;
@@ -46,9 +46,22 @@ function barClicked(d, i) {
     clicked(getProvinceNode(d.province), i);
 }
 
+function barHoverOver(d, i) {
+    mouseOverHandler(getProvinceNode(d.province), i);
+}
+
+function barHoverOut(d, i) {
+    mouseOutHandler(getProvinceNode(d.province), i);
+}
+
 function removeHighlight() {
     svg.selectAll(".bar")
         .classed("active", function(d) {
+          return false;
+        })
+
+    svg.selectAll(".bar")
+        .classed("inactive", function(d) {
           return false;
         })
 }
@@ -99,6 +112,8 @@ d3.json("barplot.json").then(function(data) {
       .attr("width", x.bandwidth())
       .attr("y", function(d) {return y(d.n_varieties);})
       .attr("height", function(d) {return height - y(d.n_varieties);})
+      .on("mouseover", barHoverOver)
+      .on("mouseout", barHoverOut)
       .on("click", barClicked);
 
   if (parameters && parameters["province"]){

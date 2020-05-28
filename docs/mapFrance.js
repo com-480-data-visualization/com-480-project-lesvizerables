@@ -46,12 +46,17 @@ function getProvinceNode(realname){
 
 // Fill province when hovering and add tooltip text
 function mouseOverHandler(d, i) {
-  d3.select(this)
-    .attr("fill", function(d) {
-      if (mapObj[d.properties.ID].dataname)
-        return "#8c1b0a";
-      else
+  g.selectAll("path")
+    .attr("fill", function(p) {
+      if (mapObj[p.properties.ID].dataname){
+        if(d === p){
+            return "#8c1b0a";
+        }
+        return "#fce8c9";
+        }
+      else{
         return "white";
+        }
     })
     // Takes a while for the tooltip to load
     .append("svg:title")
@@ -65,7 +70,7 @@ function mouseOverHandler(d, i) {
 }
 
 function mouseOutHandler(d, i) {
-  d3.select(this).attr("fill", function(d) {
+  g.selectAll("path").attr("fill", function(d) {
     if (mapObj[d.properties.ID].dataname)
       return "#fce8c9";
     else
@@ -126,7 +131,8 @@ var svg = d3
   .attr("width", WIDTH)
   .attr("height", HEIGHT)
   .attr("preserveAspectRatio", "xMinYMin meet")
-  .attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT*0.5)
+  .attr("viewBox", "300 50 " + WIDTH * 1.5 + " " + HEIGHT * 0.5)
+  //.attr("viewBox", "0 -80 " + WIDTH * 1.5 + " " + HEIGHT*0.5)
   .classed("svg-content", true);
 
 svg.append("rect")

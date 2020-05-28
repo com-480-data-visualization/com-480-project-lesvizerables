@@ -43,7 +43,12 @@ function handleHover(centered, d){
 }
 
 function handleOutHover(centered, d){
-    mediumlightBar(mapObj[centered.properties.ID].realname);
+    if(centered){
+        mediumlightBar(mapObj[centered.properties.ID].realname);
+    }
+    else{
+        removeHighlight();
+    }
 }
 
 function to_search_page(event) {
