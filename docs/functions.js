@@ -19,7 +19,7 @@ function toggleDropdown(a) {
   var i;
   for (i = 0; i < dropdowns.length; i++) {
     var openDropdown = dropdowns[i];
-    if (a.nextElementSibling.id != openDropdown.id && openDropdown.classList.contains("show")) {
+    if (a.nextElementSibling != openDropdown && openDropdown.classList.contains("show")) {
       openDropdown.classList.remove("show");
     }
   }
