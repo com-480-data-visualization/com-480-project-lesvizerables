@@ -324,10 +324,10 @@ function show_province_results(province, price_range, price) {
 
               document.getElementById("search_results_table").innerHTML +=
                 "<tr><td>"+ dataCache[obj].province + "</td><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
-                "</th><td>" + dataCache[obj].price + "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title +
+                "</td><td>" + dataCache[obj].price + "</td><td>" + dataCache[obj].points + "</td><td>" + dataCache[obj].title +
                 "<div class='dropdown'><input type='button' value='i' class='dropfield' id='info-button' onclick='javascript:toggleDropdown(this)'/>" +
                 "<div id='info-dropdown' class='dropdown-content'><a>" + dataCache[obj].description + "</a></div></div>" +
-                "</th><td>" + dataCache[obj].year + "</th></tr>";
+                "</td><td>" + dataCache[obj].year + "</td></tr>";
             }
           }
           //Show results if sucessful search
@@ -377,10 +377,11 @@ function show_region_results(region, price_range, price) {
               (price_range && !price[1] && dataCache[obj].region == region && dataCache[obj].price > price[0])) {
 
               document.getElementById("search_results_table").innerHTML +=
-                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].region + "</th><td>" + dataCache[obj].variety +
-                "</th><td>" + dataCache[obj].price + "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title +
-                        "<div class=\"info-dropdown\"> <button class=\"info-btn\" onclick=\"javascript:toggleDropdown(this)\">info</button><div class=\"dropdown-content\"><a>heihei</a></div></div>" +
-                "</th><td>" + dataCache[obj].year + "</th></tr>";
+                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
+                "</td><td>" + dataCache[obj].price + "</td><td>" + dataCache[obj].points + "</td><td>" + dataCache[obj].title +
+                "<div class='dropdown'><input type='button' value='i' class='dropfield' id='info-button' onclick='javascript:toggleDropdown(this)'/>" +
+                "<div id='info-dropdown' class='dropdown-content'><a>" + dataCache[obj].description + "</a></div></div>" +
+                "</td><td>" + dataCache[obj].year + "</td></tr>";
             }
           }
           //Show results if sucessful search
@@ -429,10 +430,11 @@ function show_variety_results(variety, price_range, price) {
               (price_range && !price[1] && dataCache[obj].variety == variety && dataCache[obj].price > price[0])) {
 
               document.getElementById("search_results_table").innerHTML +=
-                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].region + "</th><td>" + dataCache[obj].variety +
-                "</th><td>" + dataCache[obj].price + "</th><td>" + dataCache[obj].points + "</th><td>" + dataCache[obj].title +
-                          "<div class=\"info-dropdown\"> <button class=\"info-btn\" onclick=\"javascript:toggleDropdown(this)\">info</button><div class=\"dropdown-content\"><a>heihei</a></div></div>" +
-                "</th><td>" + dataCache[obj].year + "</th></tr>";
+                "<tr><td>"+ dataCache[obj].province + "</td><td>" + dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
+                "</td><td>" + dataCache[obj].price + "</td><td>" + dataCache[obj].points + "</td><td>" + dataCache[obj].title +
+                "<div class='dropdown'><input type='button' value='i' class='dropfield' id='info-button' onclick='javascript:toggleDropdown(this)'/>" +
+                "<div id='info-dropdown' class='dropdown-content'><a>" + dataCache[obj].description + "</a></div></div>" +
+                "</td><td>" + dataCache[obj].year + "</td></tr>";
             }
           }
           //Show results if sucessful search
@@ -477,7 +479,8 @@ function show_reg_var_results(region, variety, price_range, price) {
         document.getElementById("search_results_table").innerHTML +=
           "<tr><td>" + dataCache[obj].province + "</td><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
           "</td><td>" + dataCache[obj].price + "</td><td>" + dataCache[obj].points + "</td><td>" + dataCache[obj].title +
-                  "<div class=\"info-dropdown\"> <button class=\"info-btn\" onclick=\"javascript:toggleDropdown(this)\">info</button><div class=\"dropdown-content\"><a>heihei</a></div></div>" +
+          "<div class='dropdown'><input type='button' value='i' class='dropfield' id='info-button' onclick='javascript:toggleDropdown(this)'/>" +
+          "<div id='info-dropdown' class='dropdown-content'><a>" + dataCache[obj].description + "</a></div></div>" +
           "</td><td>" + dataCache[obj].year + "</td></tr>";
       }
     }
@@ -526,7 +529,8 @@ function show_prov_var_results(province, variety, price_range, price) {
               document.getElementById("search_results_table").innerHTML +=
                 "<tr><td>" + dataCache[obj].province + "</td><td>"+ dataCache[obj].region + "</td><td>" + dataCache[obj].variety +
                 "</td><td>" + dataCache[obj].price + "</td><td>" + dataCache[obj].points + "</td><td>" + dataCache[obj].title +
-                          "<div class=\"info-dropdown\"> <button class=\"info-btn\" onclick=\"javascript:toggleDropdown(this)\">info</button><div class=\"dropdown-content\"><a>heihei</a></div></div>" +
+                "<div class='dropdown'><input type='button' value='i' class='dropfield' id='info-button' onclick='javascript:toggleDropdown(this)'/>" +
+                "<div id='info-dropdown' class='dropdown-content'><a>" + dataCache[obj].description + "</a></div></div>" +
                 "</td><td>" + dataCache[obj].year + "</td></tr>";
             }
           }

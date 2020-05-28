@@ -230,11 +230,9 @@ table, tr, td:last-child {
 .bar.inactive{
   fill: #8c1b0a;
 }
-
 .bar.active:not(:hover){
   fill: #FACDD4;
 }
-
 .axis {
   font: 12px sans-serif;
 }
@@ -372,14 +370,14 @@ table, tr, td:last-child {
 }
 /* The dropdown for title description*/
 #info-button {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   text-align: center;
   margin:0;
   padding:0;
   font: 'Apple Chancery';
-  font-size: 13px;
+  font-size: 12px;
   font-style: italic;
   border-color: grey;
 }
@@ -389,7 +387,10 @@ table, tr, td:last-child {
   border-color: #FACDD4;
   border-width: 1px;
 }
-#info-dropdown a:hover{
+#info-dropdown a {
+  font-size: 12px;
+}
+#info-dropdown a:hover {
   background-color: white;
 }
 .info-dropdown {
