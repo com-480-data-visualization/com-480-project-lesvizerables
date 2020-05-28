@@ -122,9 +122,11 @@ function set_reg_dropdown(province, variety) {
           regions = dataCache[obj].regions;
 
           for(i = 0; i < regions.length; i++) {
-            var newcontent = document.createElement('div');
-            newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
-            document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+            if(regions[i]) {
+              var newcontent = document.createElement('div');
+              newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
+              document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+            }
           }
           break;
         }
@@ -141,9 +143,11 @@ function set_reg_dropdown(province, variety) {
           regions = dataCache[obj].regions;
 
           for(i = 0; i < regions.length; i++) {
-            var newcontent = document.createElement('div');
-            newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
-            document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+            if(regions[i]) {
+              var newcontent = document.createElement('div');
+              newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
+              document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+            }
           }
           break;
         }
@@ -160,9 +164,11 @@ function set_reg_dropdown(province, variety) {
           if(dataCache[obj].province == province) {
             regions = dataCache[obj].regions;
             for(i = 0; i < regions.length; i++) {
-              var newcontent = document.createElement('div');
-              newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
-              document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+              if(regions[i]) {
+                var newcontent = document.createElement('div');
+                newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
+                document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+              }
             }
             break;
           }
@@ -171,9 +177,11 @@ function set_reg_dropdown(province, variety) {
         else {
           regions = dataCache[obj].regions;
           for(i = 0; i < regions.length; i++) {
-            var newcontent = document.createElement('div');
-            newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
-            document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+            if(regions[i]) {
+              var newcontent = document.createElement('div');
+              newcontent.innerHTML = "<a class='dropdown_ele' onclick='javascript:edit_input_val.call(this, event);'>"+ regions[i] + "</a>";
+              document.getElementById("region_dropfield").appendChild(newcontent.firstChild);
+            }
           }
         }
       }
